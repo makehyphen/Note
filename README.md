@@ -9,5 +9,5 @@
 <p>
 
 <p align="middle">
-   <a href="https://docs.hyphen.so">Documentation<a> · <a href="https://docs.hyphen.so">Contact<a>
+   <a href="https://docs.hyphen.so">Documentation<a> · <a href="https://docs.hyphen.so">Contact<a> · <a href="/LICENSE">License<a>
 <p>
