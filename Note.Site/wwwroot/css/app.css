@@ -1,4 +1,8 @@
-﻿body {
+﻿html, body {
+    height: 100%;
+}
+
+body {
     background-color: #fff;
 }
 
@@ -25,7 +29,7 @@ a:hover {
     font-weight: 500;
     text-align: left;
     text-transform: uppercase;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
 .app-panel-right-header-left {
@@ -99,34 +103,34 @@ a:hover {
     position: relative;
     padding: 0px 10px 0px 20px;
     height: 27px;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
 .app-panel-left-item-active {
     background: rgba(55, 53, 47, 0.08);
 }
 
-    .app-panel-left-item:hover {
+.app-panel-left-item:hover {
+    color: #24292e;
+    text-decoration: none;
+    background: rgba(55, 53, 47, 0.08);
+}
+
+
+    .app-panel-left-item:hover > .app-panel-left-item-icon > svg {
+        color: #506bf0;
+        text-decoration: none;
+    }
+
+    .app-panel-left-item:hover > .app-panel-left-item-text {
         color: #24292e;
         text-decoration: none;
-        background: rgba(55, 53, 47, 0.08);
     }
 
 
-        .app-panel-left-item:hover > .app-panel-left-item-icon > svg {
-            color: #506bf0;
-            text-decoration: none;
-        }
-
-        .app-panel-left-item:hover > .app-panel-left-item-text {
-            color: #24292e;
-            text-decoration: none;
-        }
-
-
-        .app-panel-left-item:hover > .app-panel-left-item-badge-dot {
-            background-color: #24292e;
-        }
+    .app-panel-left-item:hover > .app-panel-left-item-badge-dot {
+        background-color: #24292e;
+    }
 
 .app-panel-left-item-text {
     color: #8a94a6;
@@ -135,6 +139,8 @@ a:hover {
 
 .app-panel-right {
     background-color: #fff;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 .col-left {
@@ -150,7 +156,7 @@ a:hover {
 
 .app-textarea {
     width: 100%;
-    min-height: 93vh;
+    min-height: 94vh;
     border: none;
     resize: none;
 }
@@ -194,6 +200,7 @@ a:hover {
 .app-octicon-hover:hover > svg {
     fill: #24292e;
 }
+
 
 
 .anim-fade-in {
@@ -243,8 +250,42 @@ a:hover {
             border: none;
             background-color: #f7f8f9;
             outline: none;
-            }
+        }
 
 .app-octicon-right {
     margin-right: 5px !important;
+}
+
+
+.app-text-container {
+    max-height: 95vh;
+    overflow: hidden;
+}
+
+.app-textarea-container {
+    max-height: calc(100vh - 70px);
+    max-width: inherit;
+    overflow: auto;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+
+::-webkit-scrollbar {
+    background: transparent;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(55, 53, 47, 0.08);
+}
+
+::-webkit-scrollbar-track {
+    background: #f7f9fb;
 }
