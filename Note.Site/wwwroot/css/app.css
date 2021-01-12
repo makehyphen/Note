@@ -96,7 +96,7 @@ a:hover {
     font-size: 14px;
     text-transform: none;
     margin-bottom: 0px;
-    margin-top: 13px !important;
+    margin-top: 12px !important;
 }
 
     .app-panel-left-header-profile:hover > .app-panel-left-item-buttons {
@@ -157,6 +157,28 @@ a:hover {
     overflow: hidden;
 }
 
+
+.app-footer-block-collapsed {
+    width: 50px;
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+}
+
+.app-top-block-collapsed {
+    width: 50px;
+    position: fixed;
+    top: 0;
+    margin: auto;
+    margin-top: 18px !important;
+}
+
+.col-collapsed {
+    width: 50px;
+    background-color: #f7f9fb;
+    height: 100vh;
+}
+
 .col-left {
     width: 15%;
     background-color: #f7f9fb;
@@ -164,7 +186,7 @@ a:hover {
 }
 
 .col-right {
-    width: 85%;
+    /*width: 85%;*/
 }
 
 
@@ -355,4 +377,10 @@ a:hover {
     position: fixed;
     bottom: 0;
     margin: auto;
+}
+
+
+.app-sidebar-collapse {
+    margin-top: -9px !important;
+    margin-left: 40px !important;
 }

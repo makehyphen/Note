@@ -1,10 +1,8 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="app-panel container clearfix">
-    <div class="app-panel-left col-left float-left">
-        <NavMenu />
-    </div>
-    <div class="app-panel-right col-right float-left">
+<div class="app-panel container clearfix d-flex">
+    <NavMenu />
+    <div class="app-panel-right col-right flex-1 float-left">
         @Body
     </div>
 </div>
