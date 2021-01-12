@@ -1,327 +1,113 @@
 ﻿@page "/"
-@*<h1>Hello, woarld!</h1>*@
-
-
-<div class="container clearfix">
-    <div class="col-10 float-left p-2 pl-4 app-panel-right-header-left d-flex">
-        <div class="mr-saved d-flex">
-            <div>NOTE</div>
-            <div class="ml-1 mr-2">→</div>
-            <div>PERSONAL</div>
-            <div class="ml-1 mr-2">→</div>
-            <div>WORKOUT PLAN</div>
-        </div>
-        <button class="btn-octicon app-octicon app-octicon-saved app-octicon-last app-octicon-rigth tooltipped tooltipped-s" type="button" aria-label="Saved" aria-disabled="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg>
-        </button>
-    </div>
-    <div class=" col-2 float-left p-2 app-panel-right-header-right">
-        @*<button class="btn-octicon app-octicon app-octicon-error app-octicon-last tooltipped tooltipped-s" type="button" aria-label="Saved">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path></svg>
-        </button>
-
-        <button class="btn-octicon app-octicon app-octicon-working app-octicon-last tooltipped tooltipped-s" type="button" aria-label="Saved">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M2.75 1a.75.75 0 000 1.5h.75v1.25a4.75 4.75 0 001.9 3.8l.333.25c.134.1.134.3 0 .4l-.333.25a4.75 4.75 0 00-1.9 3.8v1.25h-.75a.75.75 0 000 1.5h10.5a.75.75 0 000-1.5h-.75v-1.25a4.75 4.75 0 00-1.9-3.8l-.333-.25a.25.25 0 010-.4l.333-.25a4.75 4.75 0 001.9-3.8V2.5h.75a.75.75 0 000-1.5H2.75zM11 2.5H5v1.25a3.25 3.25 0 001.3 2.6l.333.25c.934.7.934 2.1 0 2.8l-.333.25a3.25 3.25 0 00-1.3 2.6v1.25h6v-1.25a3.25 3.25 0 00-1.3-2.6l-.333-.25a1.75 1.75 0 010-2.8l.333-.25a3.25 3.25 0 001.3-2.6V2.5z"></path></svg>
-        </button>*@
-
-        <button class="btn-octicon app-octicon-right app-octicon app-octicon-hover tooltipped tooltipped-w" type="button" aria-label="Align scroll" aria-disabled="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8.75 1.75a.75.75 0 00-1.5 0v.5a.75.75 0 001.5 0v-.5zM8 4a.75.75 0 01.75.75v.5a.75.75 0 01-1.5 0v-.5A.75.75 0 018 4zm.75 3.75a.75.75 0 00-1.5 0v.5a.75.75 0 001.5 0v-.5zM8 10a.75.75 0 01.75.75v.5a.75.75 0 01-1.5 0v-.5A.75.75 0 018 10zm0 3a.75.75 0 01.75.75v.5a.75.75 0 01-1.5 0v-.5A.75.75 0 018 13zm7.547-9.939A.75.75 0 0116 3.75v8.5a.75.75 0 01-1.265.545l-4.5-4.25a.75.75 0 010-1.09l4.5-4.25a.75.75 0 01.812-.144zM11.842 8l2.658 2.51V5.49L11.842 8zM0 12.25a.75.75 0 001.265.545l4.5-4.25a.75.75 0 000-1.09l-4.5-4.25A.75.75 0 000 3.75v8.5zm1.5-6.76L4.158 8 1.5 10.51V5.49z"></path></svg>
-        </button>
-
-        <button class="btn-octicon app-octicon-right app-octicon app-octicon-hover tooltipped tooltipped-w" type="button" aria-label="Show markdown preview" aria-disabled="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg>
-        </button>
-
-        <button class="btn-octicon app-octicon-right app-octicon-right-last app-octicon app-octicon-hover tooltipped tooltipped-w " type="button" aria-label="Toggle dark mode" aria-disabled="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z"></path></svg>
-        </button>
-
-        @*<button class="btn-octicon app-octicon-right app-octicon-right-last app-octicon app-octicon-hover tooltipped tooltipped-w svg-bulb-light" type="button" aria-label="Toggle dark mode" aria-disabled="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z"></path></svg>
-        </button>*@
-
-
-    </div>
-</div>
-
-
-<div class="container clearfix app-text-container pb-3">
-    <div class="col-6 float-left pl-textarea app-textarea-container overflow-hidden pr-1">
-        <textarea class="app-textarea pb-4"></textarea>
-    </div>
-
-    <div class="col-6 float-left pl-textarea app-textarea-container pr-4 pb-4">
-        <div class="markdown-body">
-            <p>Text can be <b>bold</b>, <i>italic</i>, or <s>strikethrough</s>. <a href="https://github.com">Links </a> should be blue with no underlines (unless hovered over).</p>
-
-            <p>There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.</p>
-
-            <p>There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.</p>
-
-            <blockquote>
-                <p>There should be no margin above this first sentence.</p>
-                <p>Blockquotes should be a lighter gray with a gray border along the left side.</p>
-                <p>There should be no margin below this final sentence.</p>
-            </blockquote>
-
-            <h1>Header 1</h1>
-
-            <p>This is a normal paragraph following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-
-            <h2>Header 2</h2>
-
-            <blockquote>This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</blockquote>
-
-            <h3>Header 3</h3>
-
-            <pre><code>This is a code block following a header.</code></pre>
-
-            <h4>Header 4</h4>
-
-            <ul>
-                <li>This is an unordered list following a header.</li>
-                <li>This is an unordered list following a header.</li>
-                <li>This is an unordered list following a header.</li>
-            </ul>
-
-            <h5>Header 5</h5>
-
-            <ol>
-                <li>This is an ordered list following a header.</li>
-                <li>This is an ordered list following a header.</li>
-                <li>This is an ordered list following a header.</li>
-            </ol>
-
-            <h6>Header 6</h6>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>What</th>
-                        <th>Follows</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>A table</td>
-                        <td>A header</td>
-                    </tr>
-                    <tr>
-                        <td>A table</td>
-                        <td>A header</td>
-                    </tr>
-                    <tr>
-                        <td>A table</td>
-                        <td>A header</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <hr />
-
-            <p>There's a horizontal rule above and below this.</p>
-
-            <hr />
-
-            <p>Here is an unordered list:</p>
-
-            <ul>
-                <li>Salt-n-Pepa</li>
-                <li>Bel Biv DeVoe</li>
-                <li>Kid 'N Play</li>
-            </ul>
-
-            <p>And an ordered list:</p>
-
-            <ol>
-                <li>Michael Jackson</li>
-                <li>Michael Bolton</li>
-                <li>Michael Bublé</li>
-            </ol>
-
-            <p>And an unordered task list:</p>
-
-            <ul>
-                <li><input type="checkbox" checked> Create a sample markdown document</li>
-                <li><input type="checkbox"> Add task lists to it</li>
-                <li><input type="checkbox"> Take a vacation</li>
-            </ul>
-
-            <p>And a "mixed" task list:</p>
-
-            <ul>
-                <li><input type="checkbox"> Steal underpants</li>
-                <li>?</li>
-                <li><input type="checkbox"> Profit!</li>
-            </ul>
-
-            And a nested list:
-
-            <ul>
-                <li>
-                    Jackson 5
-                    <ul>
-                        <li>Michael</li>
-                        <li>Tito</li>
-                        <li>Jackie</li>
-                        <li>Marlon</li>
-                        <li>Jermaine</li>
-                    </ul>
-                </li>
-                <li>
-                    TMNT
-                    <ul>
-                        <li>Leonardo</li>
-                        <li>Michelangelo</li>
-                        <li>Donatello</li>
-                        <li>Raphael</li>
-                    </ul>
-                </li>
-            </ul>
-
-            <p>Definition lists can be used with HTML syntax. Definition terms are bold and italic.</p>
-
-            <dl>
-                <dt>Name</dt>
-                <dd>Godzilla</dd>
-                <dt>Born</dt>
-                <dd>1952</dd>
-                <dt>Birthplace</dt>
-                <dd>Japan</dd>
-                <dt>Color</dt>
-                <dd>Green</dd>
-            </dl>
-
-            <hr />
-
-            <p>Tables should have bold headings and alternating shaded rows.</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Artist</th>
-                        <th>Album</th>
-                        <th>Year</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>David Bowie</td>
-                        <td>Scary Monsters</td>
-                        <td>1980</td>
-                    </tr>
-                    <tr>
-                        <td>Prince</td>
-                        <td>Purple Rain</td>
-                        <td>1982</td>
-                    </tr>
-                    <tr>
-                        <td>Beastie Boys</td>
-                        <td>License to Ill</td>
-                        <td>1986</td>
-                    </tr>
-                    <tr>
-                        <td>Janet Jackson</td>
-                        <td>Rhythm Nation 1814</td>
-                        <td>1989</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p>If a table is too wide, it should condense down and/or scroll horizontally.</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Artist</th>
-                        <th>Album</th>
-                        <th>Year</th>
-                        <th>Label</th>
-                        <th>Songs</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>David Bowie</td>
-                        <td>Scary Monsters</td>
-                        <td>1980</td>
-                        <td>RCA Records</td>
-                        <td>It's No Game (No. 1), Up the Hill Backwards, Scary Monsters (And Super Creeps), Ashes to Ashes, Fashion, Teenage Wildlife, Scream Like a Baby, Kingdom Come, Because You're Young, It's No Game (No. 2)</td>
-                    </tr>
-                    <tr>
-                        <td>Prince</td>
-                        <td>Purple Rain</td>
-                        <td>1982</td>
-                        <td>Warner Brothers Records</td>
-                        <td>Let's Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I'm a Star, Purple Rain</td>
-                    </tr>
-                    <tr>
-                        <td>Beastie Boys</td>
-                        <td>License to Ill</td>
-                        <td>1986</td>
-                        <td>Def Jam</td>
-                        <td>Rhymin &amp; Stealin, The New Style, She's Crafty, Posse in Effect, Slow Ride, Girls, Fight for Your Right, No Sleep till Brooklyn, Paul Revere, "Hold It Now, Hit It", Brass Monkey, Slow and Low, Time to Get Ill</td>
-                    </tr>
-                    <tr>
-                        <td>Janet Jackson</td>
-                        <td>Rhythm Nation 1814</td>
-                        <td>1989</td>
-                        <td>A&amp;M</td>
-                        <td>Interlude: Pledge, Rhythm Nation, Interlude: T.V., State of the World, Interlude: Race, The Knowledge, Interlude: Let's Dance, Miss You Much, Interlude: Come Back, Love Will Never Do (Without You), Livin' in a World (They Didn't Make), Alright, Interlude: Hey Baby, Escapade, Interlude: No Acid, Black Cat, Lonely, Come Back to Me, Someday Is Tonight, Interlude: Livin'...In Complete Darkness</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <hr />
-
-            <p>Code snippets like <code>var foo = "bar";</code> can be shown inline.</p>
-
-            <p>Also, <code>this should vertically align</code> <s><code>with this</code></s> <s>and this</s>.</p>
-
-            <p>Code can also be shown in a block element.</p>
-
-            <pre><code>var foo = "bar";</code></pre>
-
-            <p>Code can also use syntax highlighting.</p>
-
-            <pre><code class="prism-code language-javascript">var foo = "bar";</code></pre>
-
-            <pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.</code></pre>
-
-            <pre><code class="prism-code language-javascript">var foo = "The same thing is true for code with syntax highlighting. A single line of code should horizontally scroll if it is really long.";</code></pre>
-
-            <p>Inline code inside table cells should still be distinguishable.</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Language</th>
-                        <th>Code</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>JavasScript</td>
-                        <td><code>var foo = "bar";</code></td>
-                    </tr>
-                    <tr>
-                        <td>Ruby</td>
-                        <td><code>foo = "bar"</code></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <hr />
-
-            <p>Small images should be shown at their actual size.</p>
-
-            <p><img src="http://placekitten.com/g/300/200/"></p>
-
-            <p>Large images should always scale down and fit in the content container.</p>
-
-            <p><img src="http://placekitten.com/g/1200/800/"></p>
-
-            <pre><code>This is the final element on the page and there should be no margin below this.</code></pre>
+@using Markdig
+@using Ganss.XSS
+@inject IHtmlSanitizer HtmlSanitizer
+
+<div class="app-panel container clearfix d-flex">
+    <Note.Site.Components.Sidebar />
+
+    <div class="app-panel-right col-right flex-1 float-left">
+        <Note.Site.Components.Header BookTitle="@BookTitle"
+                                     PageTitle="@PageTitle"
+                                     IsSaved="@IsSaved"
+                                     IsDarkModeEnabled="@IsDarkModeEnabled"
+                                     IsMarkdownPreviewEnabled="@IsMarkdownPreviewEnabled"
+                                     IsScrollAlligmentEnabled="@IsScrollAlligmentEnabled"
+                                     OnDarkModeToggleCallback="OnDarkModeToggle"
+                                     OnMarkdownPreviewToggleCallback="OnMarkdownPreviewToggle"
+                                     OnScrollAlligmentToggleCallback="OnScrollAlligmentToggle" />
+
+        <div class="container clearfix app-text-container pb-3">
+            <div class="@( IsMarkdownPreviewEnabled ? "col-6" : "col-12"  ) float-left pl-textarea app-textarea-container overflow-hidden pr-1">
+                <textarea @bind-value="TextareaValue" @bind-value:event="oninput" class="app-textarea pb-4"></textarea>
+            </div>
+
+            <div class="@( IsMarkdownPreviewEnabled ? "col-6" : "d-none"  ) float-left pl-textarea app-textarea-container pr-4 pb-4">
+                <div class="markdown-body">
+                    @MarkdownValue
+                </div>
+            </div>
+
+
+            @*<div class="@( IsMarkdownPreviewEnabled ? "col-6" : "d-none"  ) float-left pl-textarea app-textarea-container pr-4 pb-4">
+                    <div class="markdown-body">
+                        @((MarkupString)MarkdownValue)
+                    </div>
+                </div>*@
         </div>
     </div>
 </div>
+
+@code{
+    public string BookTitle { get; set; } = "Book";
+
+    public string PageTitle { get; set; } = "Page";
+
+    public bool IsSaved { get; set; } = true;
+
+    public bool IsDarkModeEnabled { get; set; } = false;
+
+    public bool IsMarkdownPreviewEnabled { get; set; } = true;
+
+    public bool IsScrollAlligmentEnabled { get; set; } = true;
+
+
+    public void OnDarkModeToggle()
+    {
+        IsDarkModeEnabled = !IsDarkModeEnabled;
+    }
+
+    public void OnMarkdownPreviewToggle()
+    {
+        IsMarkdownPreviewEnabled = !IsMarkdownPreviewEnabled;
+        SetMarkdownValue(textareaValue);
+    }
+
+    public void OnScrollAlligmentToggle()
+    {
+        IsScrollAlligmentEnabled = !IsScrollAlligmentEnabled;
+    }
+
+    private string textareaValue;
+
+    public string TextareaValue
+    {
+        get { return textareaValue; }
+        set
+        {
+            textareaValue = value;
+            SetMarkdownValue(value);
+
+        }
+    }
+
+    public MarkupString MarkdownValue { get; set; }
+
+    public void SetMarkdownValue(string val)
+    {
+        if (IsMarkdownPreviewEnabled)
+        {
+            if (!string.IsNullOrWhiteSpace(val))
+            {
+                // Convert markdown string to HTML
+                var html = Markdig.Markdown.ToHtml(val);
+
+                // Sanitize HTML before rendering
+                var sanitizedHtml = HtmlSanitizer.Sanitize(html);
+
+                // Return sanitized HTML as a MarkupString that Blazor can render
+                MarkdownValue = new MarkupString(sanitizedHtml);
+            }
+            else
+            {
+                MarkdownValue = new MarkupString();
+            }
+        }
+    }
+
+    protected override void OnParametersSet()
+    {
+        HtmlSanitizer.Sanitize("");
+    }
+}
+
