@@ -1,4 +1,7 @@
-﻿html, body {
+﻿
+@import url('https://fonts.googleapis.com/css?family=Bodoni+Moda&display=swap');
+
+html, body {
     height: 100%;
 }
 
@@ -67,9 +70,13 @@ a:hover {
     fill: #8a94a6;
 }
 
-.app-octicon-saved > svg {
-    fill: #22863a;
+.app-octicon-saved {
+    margin-bottom: 1px;
 }
+
+    .app-octicon-saved > svg {
+        fill: #22863a;
+    }
 
 .app-octicon-error > svg {
     fill: #cb2431;
@@ -89,7 +96,12 @@ a:hover {
     font-size: 14px;
     text-transform: none;
     margin-bottom: 0px;
+    margin-top: 13px !important;
 }
+
+    .app-panel-left-header-profile:hover > .app-panel-left-item-buttons {
+        display: inline-flex;
+    }
 
 .app-panel-left-item {
     display: -webkit-box;
@@ -159,6 +171,7 @@ a:hover {
 .app-textarea {
     width: 100%;
     min-height: 96vh;
+    max-height: 96vh;
     border: none;
     resize: none;
 }
@@ -195,6 +208,11 @@ a:hover {
 
 .app-panel-left-item-buttons {
     display: none;
+    height: 18px;
+}
+
+.app-footer-buttons {
+    display: inline-flex;
     height: 18px;
     margin-top: -8px;
 }
@@ -266,7 +284,7 @@ a:hover {
 }
 
 .app-textarea-container {
-    max-height: calc(100vh - 50px);
+    max-height: calc(100vh - 45px);
     max-width: inherit;
     overflow: auto;
 }
@@ -294,5 +312,41 @@ a:hover {
 }
 
 .mr-saved {
+    margin-right: 10px !important;
+}
 
-    margin-right: 10px !important;}
+.app-octicon-right-last {
+    margin-right: 0px !important;
+}
+
+
+.svg-bulb-light > svg {
+    fill: #FCE851
+}
+
+.avatar {
+    margin-bottom: 2px !important;
+}
+
+.app-footer-text {
+    /*color: rgba(55, 53, 47, 0.08);*/
+    color: #8a94a6;
+    margin-bottom: 15px !important;
+}
+
+    .app-footer-text > a {
+        text-transform: uppercase;
+        font-style: italic;
+        color: #24292e;
+    }
+
+.font-madoni {
+    font-family: "Bodoni Moda 11pt" !important;
+}
+
+.app-footer-block {
+    width: 15%;
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+}
