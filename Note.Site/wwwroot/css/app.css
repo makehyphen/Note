@@ -175,6 +175,10 @@ a:hover {
     position: absolute;*/
 }
 
+.pl-textarea {
+    padding-left: 22px !important;
+}
+
 .app-panel-left-header-buttons {
     display: none;
     height: 15px;
@@ -187,9 +191,10 @@ a:hover {
     margin-top: -8px;
 }
 
-.btn-octicon:hover > svg {
+.app-octicon-hover:hover > svg {
     fill: #24292e;
 }
+
 
 .anim-fade-in {
     animation-name: fade-in;
@@ -238,4 +243,8 @@ a:hover {
             border: none;
             background-color: #f7f8f9;
             outline: none;
-        }
+            }
+
+.app-octicon-right {
+    margin-right: 5px !important;
+}
