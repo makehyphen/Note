@@ -187,6 +187,10 @@ a:hover {
     margin-top: -8px;
 }
 
+.btn-octicon:hover > svg {
+    fill: #24292e;
+}
+
 .anim-fade-in {
     animation-name: fade-in;
     animation-duration: 0.2s !important;
