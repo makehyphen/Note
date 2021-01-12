@@ -25,6 +25,7 @@ a:hover {
     font-weight: 500;
     text-align: left;
     text-transform: uppercase;
+    justify-content:space-between;
 }
 
 .app-panel-right-header-left {
@@ -50,7 +51,7 @@ a:hover {
 }
 
 .app-octicon {
-    margin-left: -5px !important;
+    margin-left: -10px !important;
 }
 
 .app-octicon-last {
@@ -73,6 +74,12 @@ a:hover {
     fill: #8a94a6;
 }
 
+.app-panel-left-header-octicon {
+    width: 12px !important;
+    margin-bottom: 2px !important;
+    fill: #8a94a6;
+}
+
 .app-panel-left-header-profile {
     font-size: 14px;
     text-transform: none;
@@ -92,6 +99,7 @@ a:hover {
     position: relative;
     padding: 0px 10px 0px 20px;
     height: 27px;
+    justify-content:space-between;
 }
 
     .app-panel-left-item:hover {
@@ -175,3 +183,37 @@ a:hover {
     .app-textarea:focus {
         outline: none;
     }
+
+
+.app-panel-left-header-text {
+    justify-self: start;
+    height: 15px;
+}
+
+.app-panel-left-header:hover > .app-panel-left-header-buttons {
+    display: inline;
+}
+
+.app-panel-left-item:hover > .app-panel-left-item-buttons {
+    display: inline;
+   /* right: 10px;
+    position: absolute;*/
+}
+
+.app-panel-left-header-buttons {
+    display: none;
+    height: 15px;
+    margin-top: -8px;
+}
+
+.app-panel-left-item-buttons {
+    display: none;
+    height: 18px;
+    margin-top: -8px;
+}
+
+.anim-fade-in {
+    animation-name: fade-in;
+    animation-duration: 0.2s !important;
+    animation-timing-function: ease-in-out;
+}
