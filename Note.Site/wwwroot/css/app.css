@@ -1,4 +1,11 @@
-﻿body {
+﻿
+@import url('https://fonts.googleapis.com/css?family=Bodoni+Moda&display=swap');
+
+html, body {
+    height: 100%;
+}
+
+body {
     background-color: #fff;
 }
 
@@ -25,11 +32,12 @@ a:hover {
     font-weight: 500;
     text-align: left;
     text-transform: uppercase;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
 .app-panel-right-header-left {
-    margin-top: 22px !important;
+    margin-top: 0px !important;
+    align-items: center;
     /*margin-bottom: 8px;*/
     font-size: 12px;
     line-height: 10px;
@@ -40,7 +48,7 @@ a:hover {
 }
 
 .app-panel-right-header-right {
-    margin-top: 10px !important;
+    margin-top: 0px !important;
     /*margin-bottom: 8px;*/
     font-size: 12px;
     line-height: 10px;
@@ -62,9 +70,13 @@ a:hover {
     fill: #8a94a6;
 }
 
-.app-octicon-saved > svg {
-    fill: #22863a;
+.app-octicon-saved {
+    margin-bottom: 1px;
 }
+
+    .app-octicon-saved > svg {
+        fill: #22863a;
+    }
 
 .app-octicon-error > svg {
     fill: #cb2431;
@@ -84,7 +96,12 @@ a:hover {
     font-size: 14px;
     text-transform: none;
     margin-bottom: 0px;
+    margin-top: 13px !important;
 }
+
+    .app-panel-left-header-profile:hover > .app-panel-left-item-buttons {
+        display: inline-flex;
+    }
 
 .app-panel-left-item {
     display: -webkit-box;
@@ -99,34 +116,34 @@ a:hover {
     position: relative;
     padding: 0px 10px 0px 20px;
     height: 27px;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
 .app-panel-left-item-active {
     background: rgba(55, 53, 47, 0.08);
 }
 
-    .app-panel-left-item:hover {
+.app-panel-left-item:hover {
+    color: #24292e;
+    text-decoration: none;
+    background: rgba(55, 53, 47, 0.08);
+}
+
+
+    .app-panel-left-item:hover > .app-panel-left-item-icon > svg {
+        color: #506bf0;
+        text-decoration: none;
+    }
+
+    .app-panel-left-item:hover > .app-panel-left-item-text {
         color: #24292e;
         text-decoration: none;
-        background: rgba(55, 53, 47, 0.08);
     }
 
 
-        .app-panel-left-item:hover > .app-panel-left-item-icon > svg {
-            color: #506bf0;
-            text-decoration: none;
-        }
-
-        .app-panel-left-item:hover > .app-panel-left-item-text {
-            color: #24292e;
-            text-decoration: none;
-        }
-
-
-        .app-panel-left-item:hover > .app-panel-left-item-badge-dot {
-            background-color: #24292e;
-        }
+    .app-panel-left-item:hover > .app-panel-left-item-badge-dot {
+        background-color: #24292e;
+    }
 
 .app-panel-left-item-text {
     color: #8a94a6;
@@ -135,22 +152,26 @@ a:hover {
 
 .app-panel-right {
     background-color: #fff;
+    max-height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
 .col-left {
-    width: 13%;
+    width: 15%;
     background-color: #f7f9fb;
     height: 100vh;
 }
 
 .col-right {
-    width: 87%;
+    width: 85%;
 }
 
 
 .app-textarea {
     width: 100%;
-    min-height: 93vh;
+    min-height: 96vh;
+    max-height: 96vh;
     border: none;
     resize: none;
 }
@@ -175,6 +196,10 @@ a:hover {
     position: absolute;*/
 }
 
+.pl-textarea {
+    padding-left: 22px !important;
+}
+
 .app-panel-left-header-buttons {
     display: none;
     height: 15px;
@@ -184,8 +209,20 @@ a:hover {
 .app-panel-left-item-buttons {
     display: none;
     height: 18px;
+}
+
+.app-footer-buttons {
+    display: inline-flex;
+    height: 18px;
     margin-top: -8px;
 }
+
+.app-octicon-hover:hover > svg {
+    fill: #24292e;
+    cursor: pointer;
+}
+
+
 
 .anim-fade-in {
     animation-name: fade-in;
@@ -235,3 +272,87 @@ a:hover {
             background-color: #f7f8f9;
             outline: none;
         }
+
+.app-octicon-right {
+    margin-right: 5px !important;
+}
+
+
+.app-text-container {
+    max-height: Calc(100vh - 44px);
+    overflow: hidden;
+}
+
+.app-textarea-container {
+    max-height: calc(100vh - 45px);
+    max-width: inherit;
+    overflow: auto;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+
+::-webkit-scrollbar {
+    background: transparent;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(55, 53, 47, 0.08);
+}
+
+::-webkit-scrollbar-track {
+    background: #f7f9fb;
+}
+
+.mr-saved {
+    margin-right: 10px !important;
+}
+
+.app-octicon-right-last {
+    margin-right: 0px !important;
+}
+
+
+.svg-bulb-light > svg {
+    fill: #FCE851
+}
+
+.avatar {
+    margin-bottom: 2px !important;
+}
+
+.app-footer-text {
+    /*color: rgba(55, 53, 47, 0.08);*/
+    color: #24292e;
+     ;
+    margin-bottom: 15px !important;
+}
+
+    .app-footer-text > a {
+        text-transform: uppercase;
+        
+        color: #24292e;
+    }
+
+.font-madoni {
+    font-family: "Bodoni Moda 11pt" !important;
+    font-style: italic;
+    /*background: linear-gradient(to right, #0F2027 0%, #203A43 0%, #2C5364 100%);*/
+    background: linear-gradient(to right, #f12711 0%, #f5af19 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.app-footer-block {
+    width: 15%;
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+}
