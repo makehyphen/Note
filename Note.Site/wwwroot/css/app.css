@@ -330,18 +330,24 @@ a:hover {
 
 .app-footer-text {
     /*color: rgba(55, 53, 47, 0.08);*/
-    color: #8a94a6;
+    color: #24292e;
+     ;
     margin-bottom: 15px !important;
 }
 
     .app-footer-text > a {
         text-transform: uppercase;
-        font-style: italic;
+        
         color: #24292e;
     }
 
 .font-madoni {
     font-family: "Bodoni Moda 11pt" !important;
+    font-style: italic;
+    /*background: linear-gradient(to right, #0F2027 0%, #203A43 0%, #2C5364 100%);*/
+    background: linear-gradient(to right, #f12711 0%, #f5af19 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .app-footer-block {
