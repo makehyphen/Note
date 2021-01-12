@@ -201,6 +201,7 @@ a:hover {
 
 .app-octicon-hover:hover > svg {
     fill: #24292e;
+    cursor: pointer;
 }
 
 
