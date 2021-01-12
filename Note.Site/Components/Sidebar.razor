@@ -1,8 +1,11 @@
-﻿@if (IsCollapsed)
+﻿
+@inject IJSRuntime JSRuntime
+
+@if (IsCollapsed)
 {
     <div class="app-panel-left col-collapsed float-left">
-        <Note.Site.Components.SidebarUser OnClickCallback="@UpdateCollapsed" />
-        <Note.Site.Components.SidebarFooter IsCollapsed="IsCollapsed" />
+        <Note.Site.Components.SidebarUser Username="@Hello" ImagePath="ImageUrl" OnClickCallback="@UpdateCollapsed"  />
+        <Note.Site.Components.SidebarFooter IsCollapsed="@IsCollapsed" />
     </div>
 }
 else
@@ -91,6 +94,14 @@ else
 
 
 @code{
+    [Parameter]
+    public string Username { get; set; } = "Hola";
+
+    [Parameter]
+    public string ImageUrl { get; set; }
+
+    public string Hello { get; set; } = "Hola";
+
     public bool IsCollapsed { get; set; } = true;
 
     private void UpdateCollapsed()
@@ -98,4 +109,5 @@ else
         IsCollapsed = !IsCollapsed;
         StateHasChanged();
     }
+
 }

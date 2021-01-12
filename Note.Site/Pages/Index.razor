@@ -1,113 +1,31 @@
 ﻿@page "/"
-@using Markdig
-@using Ganss.XSS
-@inject IHtmlSanitizer HtmlSanitizer
+@using Models
+<Note.Site.Components.App/>
 
-<div class="app-panel container clearfix d-flex">
-    <Note.Site.Components.Sidebar />
+<!--<CascadingValue Value="Model">
+    <Note.Site.Components.App />-->
+@*</CascadingValue>*@
 
-    <div class="app-panel-right col-right flex-1 float-left">
-        <Note.Site.Components.Header BookTitle="@BookTitle"
-                                     PageTitle="@PageTitle"
-                                     IsSaved="@IsSaved"
-                                     IsDarkModeEnabled="@IsDarkModeEnabled"
-                                     IsMarkdownPreviewEnabled="@IsMarkdownPreviewEnabled"
-                                     IsScrollAlligmentEnabled="@IsScrollAlligmentEnabled"
-                                     OnDarkModeToggleCallback="OnDarkModeToggle"
-                                     OnMarkdownPreviewToggleCallback="OnMarkdownPreviewToggle"
-                                     OnScrollAlligmentToggleCallback="OnScrollAlligmentToggle" />
-
-        <div class="container clearfix app-text-container pb-3">
-            <div class="@( IsMarkdownPreviewEnabled ? "col-6" : "col-12"  ) float-left pl-textarea app-textarea-container overflow-hidden pr-1">
-                <textarea @bind-value="TextareaValue" @bind-value:event="oninput" class="app-textarea pb-4"></textarea>
-            </div>
-
-            <div class="@( IsMarkdownPreviewEnabled ? "col-6" : "d-none"  ) float-left pl-textarea app-textarea-container pr-4 pb-4">
-                <div class="markdown-body">
-                    @MarkdownValue
-                </div>
-            </div>
-
-
-            @*<div class="@( IsMarkdownPreviewEnabled ? "col-6" : "d-none"  ) float-left pl-textarea app-textarea-container pr-4 pb-4">
-                    <div class="markdown-body">
-                        @((MarkupString)MarkdownValue)
-                    </div>
-                </div>*@
-        </div>
-    </div>
-</div>
-
-@code{
-    public string BookTitle { get; set; } = "Book";
-
-    public string PageTitle { get; set; } = "Page";
-
-    public bool IsSaved { get; set; } = true;
-
-    public bool IsDarkModeEnabled { get; set; } = false;
-
-    public bool IsMarkdownPreviewEnabled { get; set; } = true;
-
-    public bool IsScrollAlligmentEnabled { get; set; } = true;
-
-
-    public void OnDarkModeToggle()
+@*@code{
+    public CascadeModel Model { get; set; } = new CascadeModel()
     {
-        IsDarkModeEnabled = !IsDarkModeEnabled;
-    }
-
-    public void OnMarkdownPreviewToggle()
-    {
-        IsMarkdownPreviewEnabled = !IsMarkdownPreviewEnabled;
-        SetMarkdownValue(textareaValue);
-    }
-
-    public void OnScrollAlligmentToggle()
-    {
-        IsScrollAlligmentEnabled = !IsScrollAlligmentEnabled;
-    }
-
-    private string textareaValue;
-
-    public string TextareaValue
-    {
-        get { return textareaValue; }
-        set
+        Settings = new Settings()
         {
-            textareaValue = value;
-            SetMarkdownValue(value);
-
+            IsDarkModeEnabled = true,
+            IsMarkdownPreviewEnabled = true,
+            IsScrollAlligmentEnabled = true,
+            IsSidebarCollapsed = true
+        },
+        Books = new List<Book>() {
+            new Book(){
+                Name = "Development",
+                Pages =
+                    new List<Page>(){ new Page() {
+                    Inner = "# Hello Development"}
+                    }
+                }
         }
-    }
 
-    public MarkupString MarkdownValue { get; set; }
+    };
 
-    public void SetMarkdownValue(string val)
-    {
-        if (IsMarkdownPreviewEnabled)
-        {
-            if (!string.IsNullOrWhiteSpace(val))
-            {
-                // Convert markdown string to HTML
-                var html = Markdig.Markdown.ToHtml(val);
-
-                // Sanitize HTML before rendering
-                var sanitizedHtml = HtmlSanitizer.Sanitize(html);
-
-                // Return sanitized HTML as a MarkupString that Blazor can render
-                MarkdownValue = new MarkupString(sanitizedHtml);
-            }
-            else
-            {
-                MarkdownValue = new MarkupString();
-            }
-        }
-    }
-
-    protected override void OnParametersSet()
-    {
-        HtmlSanitizer.Sanitize("");
-    }
-}
-
+}*@

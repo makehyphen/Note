@@ -1,0 +1,11 @@
+﻿@inherits MarkdownBase
+
+<div class="@( IsMarkdownPreviewEnabled ? "col-6" : "col-12"  ) float-left pl-textarea app-textarea-container overflow-hidden pr-1">
+    <textarea id="div_editor" @bind-value="TextareaValue" @bind-value:event="oninput" class="app-textarea pb-4"></textarea>
+</div>
+
+<div class="@( IsMarkdownPreviewEnabled ? "col-6" : "d-none"  ) float-left pl-textarea app-textarea-container pr-4 pb-4">
+    <div id="div_markdown" class="markdown-body">
+        @MarkdownValue
+    </div>
+</div>

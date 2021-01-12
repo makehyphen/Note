@@ -1,4 +1,5 @@
-﻿
+﻿@inherits SidebarUserBase
+
 <div class="app-top-block-collapsed pb-3 @( IsCollapsed ? "d-inline" : "d-none"  )">
     <div class="d-flex flex-justify-center ">
         <div class="app-footer-buttons anim-fade-in">
@@ -12,8 +13,8 @@
 <div class="app-panel-left-block mt-2 mb-4 app-panel-left-block-profile pb-1 @( IsCollapsed ? "d-none" : "d-inline"  )">
     <div class="app-panel-left-header app-panel-left-header-profile pl-4 pr-2 css-truncate css-truncate-overflow d-flex flex-items-center">
         <div>
-            <img class="avatar avatar-2 mr-2" alt="jonrohan" src="https://avatars2.githubusercontent.com/u/13499480?s=460&u=dc817bc92bd7144f068f26107fa0d6bbf7be8471&v=4?v=3&s=48" />
-            <span>Emiliano Montesdeoca</span>
+            <img class="avatar avatar-2 mr-2" alt="jonrohan" src="@ImagePath" />
+            <span>(@Username) username</span>
         </div>
 
         <div class="app-panel-left-item-buttons app-sidebar-collapse anim-fade-in">
@@ -25,17 +26,3 @@
 </div>
 
 
-
-@code{
-    [Parameter]
-    public bool IsCollapsed { get; set; } = true;
-
-    [Parameter]
-    public EventCallback<bool> OnClickCallback { get; set; }
-
-
-    public async Task Collapse()
-    {
-        await OnClickCallback.InvokeAsync();
-    }
-}

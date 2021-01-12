@@ -1,0 +1,14 @@
+﻿@inherits AppBase
+<CascadingValue Value="Model">
+    <div class="app-panel container clearfix d-flex">
+        <Note.Site.Components.Sidebar Username="@Username" ImageUrl="@ImageUrl" />
+
+        <div class="app-panel-right col-right flex-1 float-left">
+            <Note.Site.Components.Header />
+
+            <div class="container clearfix app-text-container pb-3">
+                <Note.Site.Components.Markdown IsMarkdownPreviewEnabled="@IsMarkdownPreviewEnabled" TextareaValue="@Markdown" />
+            </div>
+        </div>
+    </div>
+</CascadingValue>
