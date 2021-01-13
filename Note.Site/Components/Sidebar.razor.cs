@@ -12,11 +12,9 @@ namespace Note.Site.Components
         [CascadingParameter]
         public CascadeData Data { get; set; }
 
-        public bool IsCollapsed { get; set; } = true;
-
         public void UpdateCollapsed()
         {
-            IsCollapsed = !IsCollapsed;
+            Data.Settings.IsSidebarCollapsed= !Data.Settings.IsSidebarCollapsed;
             //StateHasChanged();
         }
     }

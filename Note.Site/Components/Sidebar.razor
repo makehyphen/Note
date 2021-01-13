@@ -1,8 +1,8 @@
 ﻿@inherits SidebarBase
 
-<div class="app-panel-left @( IsCollapsed ? "col-collapsed" : "col-left"  ) float-left">
+<div class="app-panel-left @( Data.Settings.IsSidebarCollapsed ? "col-collapsed" : "col-left"  ) float-left">
     <!-- #region Sidebar User -->
-    <div class="app-top-block-collapsed pb-3 @( IsCollapsed ? "d-inline" : "d-none"  )">
+    <div class="app-top-block-collapsed pb-3 @( Data.Settings.IsSidebarCollapsed ? "d-inline" : "d-none"  )">
         <div class="d-flex flex-justify-center ">
             <div class="app-footer-buttons anim-fade-in">
                 <button @onclick="@UpdateCollapsed" href="/logout" class="btn-octicon app-octicon app-octicon-hover app-octicon-working tooltipped ml-1 tooltipped-e pl-3" type="button" aria-label="Show menu">
@@ -11,7 +11,7 @@
             </div>
         </div>
     </div>
-    <div class="app-panel-left-block mt-2 mb-4 app-panel-left-block-profile pb-1 @( IsCollapsed ? "d-none" : "d-inline"  )">
+    <div class="app-panel-left-block mt-2 mb-4 app-panel-left-block-profile pb-1 @( Data.Settings.IsSidebarCollapsed ? "d-none" : "d-inline"  )">
         <div class="app-panel-left-header app-panel-left-header-profile pl-4 pr-2 css-truncate css-truncate-overflow d-flex flex-items-center">
             <div>
                 <img class="avatar avatar-2 mr-2" alt="jonrohan" src="@Data.User.ImageUrl" />
@@ -27,7 +27,7 @@
     </div>
     <!-- #endregion -->
     <!-- #region Sidebar items -->
-    <div class="app-panel-left-block @( IsCollapsed ? "d-none" : "d-inline"  )">
+    <div class="app-panel-left-block @( Data.Settings.IsSidebarCollapsed ? "d-none" : "d-inline"  )">
         <div class="app-panel-left-header pl-4 pr-2 d-flex">
             <div class="app-panel-left-header-text css-truncate css-truncate-overflow">Meetings</div>
             <div class="app-panel-left-header-buttons anim-fade-in">
@@ -65,7 +65,7 @@
     </div>
     <!-- #endregion -->
     <!-- #region Sidebar Footer -->
-    <div class="app-footer-block-collapsed pb-3 @( IsCollapsed ? "d-inline" : "d-none"  )">
+    <div class="app-footer-block-collapsed pb-3 @( Data.Settings.IsSidebarCollapsed ? "d-inline" : "d-none"  )">
         <div class="d-flex flex-justify-center mt-1">
             <div class="app-footer-buttons anim-fade-in">
                 <a target="_blank" href="/logout" class="btn-octicon app-octicon app-octicon-hover app-octicon-working tooltipped ml-1 tooltipped-e pl-3" type="button" aria-label="Sign out">
@@ -74,7 +74,7 @@
             </div>
         </div>
     </div>
-    <div class="app-footer-block pb-3 @( IsCollapsed ? "d-none" : "d-inline"  )">
+    <div class="app-footer-block pb-3 @( Data.Settings.IsSidebarCollapsed ? "d-none" : "d-inline"  )">
         <div class="app-panel-left-header  app-footer-text d-flex flex-justify-center">
             <a class="" target="_blank" href="https://note.hyophen.so">Note&nbsp;</a> by <a class="font-madoni" target="_blank" href="https://hyophen.so">&nbsp;Hyphen</a>
         </div>

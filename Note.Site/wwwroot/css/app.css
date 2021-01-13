@@ -396,3 +396,14 @@ a:hover {
     fill: #24292e;
     cursor: pointer;
 }
+
+
+.app-loading {
+    height: 100vh;
+    font-size: 32px;
+    color: #24292e !important;
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
+

@@ -14,10 +14,10 @@ namespace Note.Site.Components
         {
             Settings = new Settings()
             {
-                IsDarkModeEnabled = true,
+                IsDarkModeEnabled = false,
                 IsMarkdownPreviewEnabled = true,
                 IsScrollAlligmentEnabled = true,
-                IsSidebarCollapsed = true
+                IsSidebarCollapsed = false
             },
             Books = new List<Book>() {
                 new Book(){
