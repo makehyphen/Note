@@ -20,15 +20,15 @@ jobs:
         dotnet-version: 5.0.100-preview.2.20176.6
 
     # Build the solution
-    - name: Build .NET Core Project
-      run: dotnet build Note.Site/Note.Site.csproj -c Release 
+    - name: Build
+      run: dotnet build 
       
     # Build the solution
-    - name: Test .NET Core Project
-      run: dotnet test Note.Site/Note.Site.csproj 
+    - name: Test
+      run: dotnet test 
 
     # publishes Blazor project to the release-folder
-    - name: Publish .NET Core Project
+    - name: Publish
       run: dotnet publish Note.Site/Note.Site.csproj -c Release -o release --nologo
     
     # changes the base-tag in index.html from '/' to 'Note' to match GitHub Pages repository subdirectory
