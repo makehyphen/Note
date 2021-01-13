@@ -1,5 +1,6 @@
 ﻿using Ganss.XSS;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using Note.Site.Models;
 using System;
 using System.Collections.Generic;
@@ -13,13 +14,19 @@ namespace Note.Site.Components
         [CascadingParameter]
         public CascadeData Data { get; set; }
 
+        [Inject]
+        public IJSRuntime JSRuntime { get; set; }
+
         #region Header
 
         public void SetDarkModeToggle() => Data.Settings.IsDarkModeEnabled = !Data.Settings.IsDarkModeEnabled;
 
         public void SetMarkdownPreviewToggle() => Data.Settings.IsMarkdownPreviewEnabled = !Data.Settings.IsMarkdownPreviewEnabled;
 
-        public void SetScrollAlligmentToggle() => Data.Settings.IsScrollAlligmentEnabled = !Data.Settings.IsScrollAlligmentEnabled;
+        public async Task SetScrollAlligmentToggle() {
+            Data.Settings.IsScrollAlligmentEnabled = !Data.Settings.IsScrollAlligmentEnabled;
+            await JSRuntime.InvokeVoidAsync("setState", Data.Settings.IsScrollAlligmentEnabled);
+        }
 
 
         #endregion
@@ -35,6 +42,7 @@ namespace Note.Site.Components
             set
             {
                 Data.SelectedPage.Inner = value;
+                //JSRuntime.InvokeVoidAsync("reset");
                 SetMarkdownValue(value);
 
             }
@@ -68,6 +76,17 @@ namespace Note.Site.Components
         {
             SetMarkdownValue(TextareaValue);
         }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                await JSRuntime.InvokeVoidAsync("setState", Data.Settings.IsScrollAlligmentEnabled);
+                await JSRuntime.InvokeVoidAsync("reset");
+            }
+        }
+
+
 
         #endregion
     }

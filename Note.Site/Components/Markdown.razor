@@ -1,9 +1,7 @@
 ﻿@inherits MarkdownBase
 
 <div class="app-panel-right col-right flex-1 float-left">
-
-    @* Header *@
-
+    <!-- #region Header -->
     <div class="container clearfix">
         <div class="col-10 float-left p-2 pl-4 app-panel-right-header-left d-flex">
             <div class="mr-saved d-flex">
@@ -52,22 +50,19 @@
             </button>
         </div>
     </div>
-
-    @* End Header *@
-
-    @* Markdown Panel *@
-
+    <!-- #endregion -->
+    <!-- #region Markdown -->
     <div class="container clearfix app-text-container pb-3">
-        <div class="@( Data.Settings.IsMarkdownPreviewEnabled ? "col-6" : "col-12"  ) float-left pl-textarea app-textarea-container overflow-hidden pr-1">
-            <textarea id="div_editor" @bind-value="TextareaValue" @bind-value:event="oninput" class="app-textarea pb-4"></textarea>
+        <div class="@( Data.Settings.IsMarkdownPreviewEnabled ? "col-6" : "col-12"  ) float-left pl-textarea app-textarea-container overflow-hidden pr-1" >
+            <textarea id="div_editor" @bind-value="TextareaValue" @bind-value:event="oninput" class="app-textarea pb-4 syncscroll" name="scrollElement"></textarea>
         </div>
 
-        <div class="@( Data.Settings.IsMarkdownPreviewEnabled ? "col-6" : "d-none"  ) float-left pl-textarea app-textarea-container pr-4 pb-4">
+        <div class="@( Data.Settings.IsMarkdownPreviewEnabled ? "col-6" : "d-none"  ) float-left pl-textarea app-textarea-container pr-4 pb-4 syncscroll" name="scrollElement">
             <div id="div_markdown" class="markdown-body">
                 @MarkdownValue
             </div>
         </div>
     </div>
 
-    @* End Markdown Panel *@
+    <!-- #endregion -->
 </div>

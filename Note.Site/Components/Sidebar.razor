@@ -1,9 +1,7 @@
 ﻿@inherits SidebarBase
 
 <div class="app-panel-left @( IsCollapsed ? "col-collapsed" : "col-left"  ) float-left">
-
     <!-- #region Sidebar User -->
-
     <div class="app-top-block-collapsed pb-3 @( IsCollapsed ? "d-inline" : "d-none"  )">
         <div class="d-flex flex-justify-center ">
             <div class="app-footer-buttons anim-fade-in">
@@ -13,7 +11,6 @@
             </div>
         </div>
     </div>
-
     <div class="app-panel-left-block mt-2 mb-4 app-panel-left-block-profile pb-1 @( IsCollapsed ? "d-none" : "d-inline"  )">
         <div class="app-panel-left-header app-panel-left-header-profile pl-4 pr-2 css-truncate css-truncate-overflow d-flex flex-items-center">
             <div>
@@ -28,11 +25,8 @@
             </div>
         </div>
     </div>
-
     <!-- #endregion -->
-
     <!-- #region Sidebar items -->
-
     <div class="app-panel-left-block @( IsCollapsed ? "d-none" : "d-inline"  )">
         <div class="app-panel-left-header pl-4 pr-2 d-flex">
             <div class="app-panel-left-header-text css-truncate css-truncate-overflow">Meetings</div>
@@ -69,11 +63,8 @@
             <div href="" class="app-panel-left-item-text css-truncate css-truncate-overflow">🤝🏻 12/01/2021 sprint review </div>
         </a>
     </div>
-
     <!-- #endregion -->
-
     <!-- #region Sidebar Footer -->
-
     <div class="app-footer-block-collapsed pb-3 @( IsCollapsed ? "d-inline" : "d-none"  )">
         <div class="d-flex flex-justify-center mt-1">
             <div class="app-footer-buttons anim-fade-in">
@@ -83,7 +74,6 @@
             </div>
         </div>
     </div>
-
     <div class="app-footer-block pb-3 @( IsCollapsed ? "d-none" : "d-inline"  )">
         <div class="app-panel-left-header  app-footer-text d-flex flex-justify-center">
             <a class="" target="_blank" href="https://note.hyophen.so">Note&nbsp;</a> by <a class="font-madoni" target="_blank" href="https://hyophen.so">&nbsp;Hyphen</a>
@@ -105,6 +95,5 @@
             </div>
         </div>
     </div>
-
     <!-- #endregion -->
 </div>
