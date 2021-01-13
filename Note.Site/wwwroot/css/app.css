@@ -13,8 +13,8 @@
 
     --app-panel-left-header-color:#24292e;
 
-    --app-octicon-saved-color: #22863a;
-    --app-octicon-saved-error: #cb2431;
+    --app-octicon-saved-color: #28a745;
+    --app-octicon-saved-error: 	#d73a49;
 
     --app-textarea-bg-color: #fff;
     --app-textarea-font-color: initial;
@@ -25,6 +25,8 @@
     --app-markdown-code: initial;
 
     --app-footer-color: #8a94a6;
+    /* --app-note-logo-color : linear-gradient(to right,#007991 25%,#78ffd6 100%); */
+    --app-note-logo-color : linear-gradient(to right, #000428 0%,#004e92 100%);
 }
 
 
@@ -52,7 +54,9 @@
     --app-markdown-code: #161b22;
 
     --app-footer-color: #8a94a6;
+    --app-note-logo-color : linear-gradient(to right, #f12711 0%, #f5af19 100%);
 }
+
 
 
 *{
@@ -253,7 +257,7 @@ button:focus {
 }
 
 .col-left {
-    width: 15%;
+    width: 260px;
     background-color: var(--app-panel-left-bg-color);
     height: 100vh;
 }
@@ -461,13 +465,14 @@ button:focus {
     font-style: italic;
     /*background: linear-gradient(to right, #0F2027 0%, #203A43 0%, #2C5364 100%);*/
     /* background: linear-gradient(to right, #f12711 0%, #f5af19 100%); */
-    background: var(--app-panel-left-item-color) ;
+    background: var(--app-note-logo-color);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: 14px;
 }
 
 .app-footer-block {
-    width: 15%;
+    width: 260px;
     position: fixed;
     bottom: 0;
     margin: auto;
@@ -480,16 +485,18 @@ button:focus {
 }
 
 .app-octicon-enabled>svg {
-    fill: var(--app-panel-left-item-color);
+    /* fill: var(--app-panel-left-item-color); */
+    fill: var(--app-octicon-saved-color);
     cursor: pointer;
 }
 
 
 .app-loading {
     height: 100vh;
-    font-size: 32px;
-    color: var(--app-panel-left-item-color) !important;
-    background: none;
-    -webkit-background-clip: initial;
-    -webkit-text-fill-color: initial;
+    font-size: 56px;
+    background: var(--app-note-logo-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Bodoni Moda 11pt" !important;
+    font-style: italic;
 }
