@@ -57,7 +57,7 @@
             <textarea id="div_editor" @bind-value="TextareaValue" @bind-value:event="oninput" class="app-textarea pb-4 syncscroll" name="scrollElement"></textarea>
         </div>
 
-        <div class="@( Data.Settings.IsMarkdownPreviewEnabled ? "col-6" : "d-none"  ) float-left pl-textarea app-textarea-container pr-4 pb-4 syncscroll" name="scrollElement">
+        <div class="@( Data.Settings.IsMarkdownPreviewEnabled ? "col-6 anim-fade-in" : "d-none  anim-fade-in"  ) float-left pl-textarea app-textarea-container pr-4 pb-4 syncscroll" name="scrollElement">
             <div id="div_markdown" class="markdown-body">
                 @MarkdownValue
             </div>

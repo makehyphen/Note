@@ -22,6 +22,8 @@
     --app-octicon-bulb-light: #FCE851;
     --app-octicon-bulb-dark:#24292e;
 
+    --app-markdown-code: initial;
+
     --app-footer-color: #8a94a6;
 }
 
@@ -47,13 +49,19 @@
     --app-octicon-bulb-light: #FCE851;
     --app-octicon-bulb-dark: #fff;
 
+    --app-markdown-code: #161b22;
+
     --app-footer-color: #8a94a6;
 }
 
 
 *{
-    transition: all 250ms ease;
-    transition-property: background, color, fill;
+    transition: all 250ms;
+    /* transition-property: background, color, fill; */
+}
+
+.markdown-body .highlight pre, .markdown-body pre {
+    background-color: var(--app-markdown-code);
 }
 
 html,
@@ -84,7 +92,6 @@ button:focus {
 .app-panel-left-block-profile {
     /*border-bottom: 1px solid--app-panel-right-header-left-color);*/
 }
-
 
 
 .app-panel-left-header {
@@ -453,7 +460,8 @@ button:focus {
     font-family: "Bodoni Moda 11pt" !important;
     font-style: italic;
     /*background: linear-gradient(to right, #0F2027 0%, #203A43 0%, #2C5364 100%);*/
-    background: linear-gradient(to right, #f12711 0%, #f5af19 100%);
+    /* background: linear-gradient(to right, #f12711 0%, #f5af19 100%); */
+    background: var(--app-panel-left-item-color) ;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -480,7 +488,7 @@ button:focus {
 .app-loading {
     height: 100vh;
     font-size: 32px;
-    color: var(--app-panel-left-item-color !important;
+    color: var(--app-panel-left-item-color) !important;
     background: none;
     -webkit-background-clip: initial;
     -webkit-text-fill-color: initial;

@@ -16,6 +16,7 @@ var names = {};
 
 var setState = function (enabled) {
     Enabled = enabled;
+    setStyle(enabled);
 }
 
 var reset = function () {
@@ -100,10 +101,22 @@ var reset = function () {
                             )
                         ) {
                             otherEl[scroll + Top] = scrollY;
+
+                            var selector = "#app > div > div.app-panel-right.col-right.flex-1.float-left > div.container.clearfix.app-text-container.pb-3 > div.col-6.float-left.pl-textarea.app-textarea-container.overflow-hidden.pr-1"
+                            var element = document.querySelector(selector);
+            
+                            if (element.className.indexOf("pt-4") < -1) {
+                                element.classList.add("pt-4");
+                            }
                         }
                     }
                 }
             }
         }, 0);
     }
+}
+
+var setStyle = function () { 
+
+
 }
