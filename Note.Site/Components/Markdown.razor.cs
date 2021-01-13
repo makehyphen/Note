@@ -1,5 +1,6 @@
 ﻿using Ganss.XSS;
 using Microsoft.AspNetCore.Components;
+using Note.Site.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,22 +10,31 @@ namespace Note.Site.Components
 {
     public class MarkdownBase : ComponentBase
     {
+        [CascadingParameter]
+        public CascadeData Data { get; set; }
+
+        #region Header
+
+        public void SetDarkModeToggle() => Data.Settings.IsDarkModeEnabled = !Data.Settings.IsDarkModeEnabled;
+
+        public void SetMarkdownPreviewToggle() => Data.Settings.IsMarkdownPreviewEnabled = !Data.Settings.IsMarkdownPreviewEnabled;
+
+        public void SetScrollAlligmentToggle() => Data.Settings.IsScrollAlligmentEnabled = !Data.Settings.IsScrollAlligmentEnabled;
+
+
+        #endregion
+
+        #region Markdown
+
         [Inject]
         public IHtmlSanitizer HtmlSanitizer { get; set; }
 
-        [Parameter]
-        public bool IsMarkdownPreviewEnabled { get; set; }
-
-
-        private string textareaValue;
-
-        [Parameter]
         public string TextareaValue
         {
-            get { return textareaValue; }
+            get { return Data.SelectedPage.Inner; }
             set
             {
-                textareaValue = value;
+                Data.SelectedPage.Inner = value;
                 SetMarkdownValue(value);
 
             }
@@ -34,7 +44,7 @@ namespace Note.Site.Components
 
         public void SetMarkdownValue(string val)
         {
-            if (IsMarkdownPreviewEnabled)
+            if (Data.Settings.IsMarkdownPreviewEnabled)
             {
                 if (!string.IsNullOrWhiteSpace(val))
                 {
@@ -58,5 +68,7 @@ namespace Note.Site.Components
         {
             SetMarkdownValue(TextareaValue);
         }
+
+        #endregion
     }
 }

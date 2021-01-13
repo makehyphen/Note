@@ -11,5 +11,8 @@ namespace Note.Site.Models
         public bool IsMarkdownPreviewEnabled { get; set; }
         public bool IsScrollAlligmentEnabled { get; set; }
         public bool IsSidebarCollapsed { get; set; }
+
+
+        //public void UpdatedM
     }
 }

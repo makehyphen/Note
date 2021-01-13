@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 using AngleSharp;
 using Ganss.XSS;
+using Blazored.LocalStorage;
 
 namespace Note.Site
 {
@@ -19,6 +20,9 @@ namespace Note.Site
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
+
+            builder.Services.AddBlazoredLocalStorage(config =>
+                config.JsonSerializerOptions.WriteIndented = true);
 
             builder.Services.AddScoped<IHtmlSanitizer, HtmlSanitizer>(x =>
             {

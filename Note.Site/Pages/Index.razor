@@ -1,31 +1,4 @@
 ﻿@page "/"
 @using Models
+
 <Note.Site.Components.App/>
-
-<!--<CascadingValue Value="Model">
-    <Note.Site.Components.App />-->
-@*</CascadingValue>*@
-
-@*@code{
-    public CascadeModel Model { get; set; } = new CascadeModel()
-    {
-        Settings = new Settings()
-        {
-            IsDarkModeEnabled = true,
-            IsMarkdownPreviewEnabled = true,
-            IsScrollAlligmentEnabled = true,
-            IsSidebarCollapsed = true
-        },
-        Books = new List<Book>() {
-            new Book(){
-                Name = "Development",
-                Pages =
-                    new List<Page>(){ new Page() {
-                    Inner = "# Hello Development"}
-                    }
-                }
-        }
-
-    };
-
-}*@
