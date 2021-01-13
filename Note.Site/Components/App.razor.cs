@@ -14,7 +14,7 @@ namespace Note.Site.Components
         {
             Settings = new Settings()
             {
-                IsDarkModeEnabled = false,
+                IsDarkModeEnabled = true,
                 IsMarkdownPreviewEnabled = true,
                 IsScrollAlligmentEnabled = true,
                 IsSidebarCollapsed = false

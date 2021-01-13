@@ -19,11 +19,16 @@ namespace Note.Site.Components
 
         #region Header
 
-        public void SetDarkModeToggle() => Data.Settings.IsDarkModeEnabled = !Data.Settings.IsDarkModeEnabled;
+        public async Task SetDarkModeToggle()
+        {
+            Data.Settings.IsDarkModeEnabled = !Data.Settings.IsDarkModeEnabled;
+            await JSRuntime.InvokeVoidAsync("setDarkMode", Data.Settings.IsDarkModeEnabled);
+        }
 
         public void SetMarkdownPreviewToggle() => Data.Settings.IsMarkdownPreviewEnabled = !Data.Settings.IsMarkdownPreviewEnabled;
 
-        public async Task SetScrollAlligmentToggle() {
+        public async Task SetScrollAlligmentToggle()
+        {
             Data.Settings.IsScrollAlligmentEnabled = !Data.Settings.IsScrollAlligmentEnabled;
             await JSRuntime.InvokeVoidAsync("setState", Data.Settings.IsScrollAlligmentEnabled);
         }
@@ -81,6 +86,7 @@ namespace Note.Site.Components
         {
             if (firstRender)
             {
+                await JSRuntime.InvokeVoidAsync("setDarkMode", Data.Settings.IsDarkModeEnabled);
                 await JSRuntime.InvokeVoidAsync("setState", Data.Settings.IsScrollAlligmentEnabled);
                 await JSRuntime.InvokeVoidAsync("reset");
             }
