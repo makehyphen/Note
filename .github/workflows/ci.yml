@@ -21,6 +21,10 @@ jobs:
 
     # Build the solution
     - name: Build
+      run: dotnet restore
+
+    # Build the solution
+    - name: Build
       run: dotnet build 
       
     # Build the solution
