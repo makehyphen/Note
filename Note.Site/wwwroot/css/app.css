@@ -339,11 +339,18 @@ a:hover {
 
 .app-octicon-right-last {
     margin-right: 0px !important;
+    margin-left: -15px !important;
+}
+
+
+.svg-bulb-light:hover > svg {
+
+    cursor: pointer;
 }
 
 
 .svg-bulb-light > svg {
-    fill: #FCE851
+    fill: #FCE851;
 }
 
 .avatar {
@@ -383,4 +390,9 @@ a:hover {
 .app-sidebar-collapse {
     margin-top: -9px !important;
     margin-left: 40px !important;
+}
+
+.app-octicon-enabled > svg {
+    fill: #24292e;
+    cursor: pointer;
 }

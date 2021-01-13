@@ -8,6 +8,10 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
+using AngleSharp;
+using Ganss.XSS;
+using Blazored.LocalStorage;
+
 namespace Note.Site
 {
     public class Program
@@ -16,6 +20,16 @@ namespace Note.Site
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
+
+            builder.Services.AddBlazoredLocalStorage(config =>
+                config.JsonSerializerOptions.WriteIndented = true);
+
+            builder.Services.AddScoped<IHtmlSanitizer, HtmlSanitizer>(x =>
+            {
+                var sanitizer = new Ganss.XSS.HtmlSanitizer();
+                sanitizer.AllowedAttributes.Add("class");
+                return sanitizer;
+            });
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
