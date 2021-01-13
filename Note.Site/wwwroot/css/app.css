@@ -11,36 +11,38 @@
     --app-panel-left-item-color: #24292e;
     --app-panel-left-item-active-color: rgba(55, 53, 47, 0.08);
 
-    --app-panel-left-header-color:#24292e;
+    --app-panel-left-header-color: #24292e;
 
     --app-octicon-saved-color: #28a745;
-    --app-octicon-saved-error: 	#d73a49;
+    --app-octicon-saved-error: #d73a49;
 
     --app-textarea-bg-color: #fff;
     --app-textarea-font-color: initial;
 
     --app-octicon-bulb-light: #FCE851;
-    --app-octicon-bulb-dark:#24292e;
+    --app-octicon-bulb-dark: #24292e;
 
     --app-markdown-code: initial;
 
     --app-footer-color: #8a94a6;
     /* --app-note-logo-color : linear-gradient(to right,#007991 25%,#78ffd6 100%); */
-    --app-note-logo-color : linear-gradient(to right, #000428 0%,#004e92 100%);
+    --app-note-logo-color: linear-gradient(to right, #000428 0%, #004e92 100%);
+
+    --app-note-login-color: #24292e;
 }
 
 
-[data-theme="dark"]  {
+[data-theme="dark"] {
 
     --app-panel-right-header-left-color: #8a94a6;
-    --app-panel-right-bg-color:#06090f;
+    --app-panel-right-bg-color: #06090f;
 
     --app-panel-left-bg-color: #0d1117;
 
     --app-panel-left-item-color: #c9d1d9;
-    --app-panel-left-item-active-color:#161b22;
+    --app-panel-left-item-active-color: #161b22;
 
-    --app-panel-left-header-color:#c9d1d9;
+    --app-panel-left-header-color: #c9d1d9;
 
     --app-octicon-saved-color: #22863a;
     --app-octicon-saved-error: #cb2431;
@@ -54,17 +56,20 @@
     --app-markdown-code: #161b22;
 
     --app-footer-color: #8a94a6;
-    --app-note-logo-color : linear-gradient(to right, #f12711 0%, #f5af19 100%);
+    --app-note-logo-color: linear-gradient(to right, #f12711 0%, #f5af19 100%);
+
+    --app-note-login-color: #c9d1d9;
 }
 
 
 
-*{
+* {
     transition: all 250ms;
     /* transition-property: background, color, fill; */
 }
 
-.markdown-body .highlight pre, .markdown-body pre {
+.markdown-body .highlight pre,
+.markdown-body pre {
     background-color: var(--app-markdown-code);
 }
 
@@ -75,7 +80,7 @@ body {
 
 body {
     background: var(--app-panel-right-bg-color);
-    
+
 }
 
 
@@ -91,7 +96,7 @@ a:hover {
 button:focus {
     outline: none;
     box-shadow: none;
-  }
+}
 
 .app-panel-left-block-profile {
     /*border-bottom: 1px solid--app-panel-right-header-left-color);*/
@@ -231,7 +236,7 @@ button:focus {
     overflow: hidden;
 }
 
-.markdown-body{
+.markdown-body {
     color: var(--app-textarea-font-color) !important;
 }
 
@@ -486,17 +491,60 @@ button:focus {
 
 .app-octicon-enabled>svg {
     /* fill: var(--app-panel-left-item-color); */
-    fill: var(--app-octicon-saved-color);
+    fill: var(--app-octicon-bulb-dark);
     cursor: pointer;
 }
 
 
 .app-loading {
     height: 100vh;
+    /* width: 100vw; */
     font-size: 56px;
-    background: var(--app-note-logo-color);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     font-family: "Bodoni Moda 11pt" !important;
     font-style: italic;
+    color: var(--app-panel-left-header-color);
+    background-color: var(--app-panel-right-bg-color);
+    font-style: italic;
+}
+
+.app-login {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.btn-login>svg {
+    height: 24px;
+    fill: var(--app-panel-right-header-left-color);
+}
+
+.btn-login:hover>svg{
+    fill: var(--app-panel-left-item-color);
+    cursor: pointer;
+}
+
+.app-login-text {
+    font-size: 56px;
+    font-family: "Bodoni Moda 11pt" !important;
+    font-style: italic;
+    color: var(--app-panel-left-header-color);
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+
+.app-login-subtext{
+    margin-top: 24px !important;
+}
+
+.app-login-subtext > a {
+    color: var(--app-panel-right-header-left-color);
+    font-size: 12px;
+}
+.app-login-subtext:hover > a {
+    color: var(--app-panel-left-item-color);
+    cursor: pointer;
+}
+
+.app-login-subtext-emoji{
+    font-weight: 800;
 }
