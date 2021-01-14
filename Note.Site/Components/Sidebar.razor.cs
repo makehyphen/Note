@@ -14,8 +14,30 @@ namespace Note.Site.Components
 
         public void UpdateCollapsed()
         {
-            Data.Settings.IsSidebarCollapsed= !Data.Settings.IsSidebarCollapsed;
+            Data.Settings.IsSidebarCollapsed = !Data.Settings.IsSidebarCollapsed;
             //StateHasChanged();
         }
+
+        #region Book
+
+        public void CreateBook() { }
+        public void DeleteBook() { }
+
+        #endregion
+
+        #region Page
+
+        public void CreateBookPage() { }
+        public void DeleteBookPage() { }
+
+        public async Task SelectBookPage(Guid id)
+        {
+            Data.History.SelectedPageId = id;
+            Data.Callback();
+        }
+
+        #endregion
+
+
     }
 }

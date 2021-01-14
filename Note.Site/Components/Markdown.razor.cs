@@ -43,7 +43,17 @@ namespace Note.Site.Components
 
         public string TextareaValue
         {
-            get { return Data.SelectedPage.Inner; }
+            get {
+
+                if (Data.SelectedPage != null && Data.SelectedPage != default )
+                {
+                    return Data.SelectedPage.Inner;
+                }
+                else
+                {
+                    return default;
+                }
+            }
             set
             {
                 Data.SelectedPage.Inner = value;
@@ -57,7 +67,7 @@ namespace Note.Site.Components
 
         public void SetMarkdownValue(string val)
         {
-            if (Data.Settings.IsMarkdownPreviewEnabled)
+            if (Data.Settings.IsMarkdownPreviewEnabled && Data.SelectedPage != null && Data.SelectedPage != default)
             {
                 if (!string.IsNullOrWhiteSpace(val))
                 {
