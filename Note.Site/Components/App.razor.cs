@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using Note.Site.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,9 @@ namespace Note.Site.Components
 {
     public class AppBase : ComponentBase
     {
+        [Inject]
+        public IJSRuntime JSRuntime { get; set; }
+
         public static Guid _bookId = Guid.NewGuid();
         public static Guid _pageId = Guid.NewGuid();
 
@@ -53,6 +57,7 @@ namespace Note.Site.Components
             if (firstRender)
             {
                 Model.Callback = MyStateHasChanged;
+                await JSRuntime.InvokeVoidAsync("setDarkMode", Model.Settings.IsDarkModeEnabled);
             }
         }
 
