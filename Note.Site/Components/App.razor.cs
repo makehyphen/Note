@@ -1,12 +1,17 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using Note.Site.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Note.Site.Components
 {
     public class AppBase : ComponentBase
     {
+        [Inject]
+        public IJSRuntime JSRuntime { get; set; }
+
         public static Guid _bookId = Guid.NewGuid();
         public static Guid _pageId = Guid.NewGuid();
 
@@ -20,11 +25,11 @@ namespace Note.Site.Components
                 IsSidebarCollapsed = false
             },
             Books = new List<Book>() {
-                new Book(){
+                new Book() {
                     Id = _bookId,
                     Name = "Development",
                     Pages =
-                        new List<Page>(){
+                        new List<Page>() {
                             new Page() {
                                 Id = _pageId,
                                 Title = "Page",
@@ -32,7 +37,8 @@ namespace Note.Site.Components
                                 Saved = false
                             }
                         }
-                    } },
+                    }
+                },
             User = new User()
             {
                 Username = "Emiliano",
@@ -44,5 +50,21 @@ namespace Note.Site.Components
                 SelectedPageId = _pageId
             }
         };
+
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                Model.Callback = MyStateHasChanged;
+                await JSRuntime.InvokeVoidAsync("setDarkMode", Model.Settings.IsDarkModeEnabled);
+            }
+        }
+
+        public void MyStateHasChanged()
+        {
+            StateHasChanged();
+        }
+
     }
 }

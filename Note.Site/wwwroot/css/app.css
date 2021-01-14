@@ -83,6 +83,10 @@ body {
 
 }
 
+.app-sidebar-name-text {
+    color: var(--app-panel-left-header-color) !important;
+}
+
 
 a:hover {
     text-decoration: none !important;
@@ -386,7 +390,7 @@ button:focus {
 }
 
 .app-octicon-right {
-    margin-right: 5px !important;
+    margin-right: 10px !important;
 }
 
 
@@ -429,7 +433,7 @@ button:focus {
 
 .app-octicon-right-last {
     margin-right: 0px !important;
-    margin-left: -15px !important;
+    margin-left: -14px !important;
 }
 
 
