@@ -24,6 +24,11 @@ namespace Note.Site.Components
                 textareaValue = value;
                 Data.SelectedPage.Inner = textareaValue;
                 Data.SelectedPage.Saved = false;
+
+                if (!Data.SavingEnabled)
+                {
+                    InvokeAsync(Data.Callback);
+                }
             }
 
             get

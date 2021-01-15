@@ -27,7 +27,6 @@ var renderMarkdown = function (doItAgain) {
 
             alreadyAddedEvent = true;
         }
-
     }
 }
 
@@ -35,7 +34,6 @@ var renderMarkdownNow = function (value) {
     let previewElement = document.getElementById('div_markdown');
     previewElement.innerHTML = marked(value);
 }
-
 
 /// Scroll align
 

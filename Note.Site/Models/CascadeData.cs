@@ -15,6 +15,8 @@ namespace Note.Site.Models
 
         public Action Callback { get; set; }
 
+        public bool SavingEnabled { get; set; }
+
         private Book selectedBook;
         public Book SelectedBook
         {

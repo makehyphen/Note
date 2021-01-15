@@ -3,17 +3,20 @@ using Microsoft.JSInterop;
 using Note.Site.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Note.Site.Components
 {
-    public class AppBase : ComponentBase
+    public class NoteAppBase : ComponentBase
     {
         [Inject]
         public IJSRuntime JSRuntime { get; set; }
 
         public static Guid _bookId = Guid.NewGuid();
         public static Guid _pageId = Guid.NewGuid();
+
+
 
         public CascadeData Model { get; set; } = new CascadeData()
         {
@@ -61,7 +64,8 @@ namespace Note.Site.Components
             {
                 SelectedBookId = _bookId,
                 SelectedPageId = _pageId
-            }
+            },
+            SavingEnabled = false
         };
 
 
@@ -77,37 +81,30 @@ namespace Note.Site.Components
         public void MyStateHasChanged()
         {
             StateHasChanged();
-        }
 
-
-        protected override async Task OnParametersSetAsync()
-        {
-            await Task.Delay(1000);
-        }
-
-        protected override async Task OnInitializedAsync()
-        {
-        }
-
-
-        public async Task AutoSave()
-        {
-            while (true)
+            if (!Model.SavingEnabled)
             {
-                foreach (var book in Model.Books)
-                {
-                    foreach (var page in book.Pages)
-                    {
-                        if (!page.Saved)
-                        {
-                            // timeout instead of logic
-                            await Task.Delay(1000);
-                            page.Saved = true;
-                            StateHasChanged();
-                        }
-                    }
-                }
+                Model.SavingEnabled = true;
 
+                Task.Run(async () =>
+                {
+                    var timer = new Timer(new TimerCallback(async _ =>
+                    {
+                        foreach (var book in Model.Books)
+                        {
+                            foreach (var page in book.Pages)
+                            {
+                                if (!page.Saved)
+                                {
+                                    // Logic to save here!
+                                    
+                                    page.Saved = true;
+                                    StateHasChanged();
+                                }
+                            }
+                        }
+                    }), null, 0, 5000);
+                });
             }
         }
     }
