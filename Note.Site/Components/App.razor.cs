@@ -34,8 +34,21 @@ namespace Note.Site.Components
                                 Id = _pageId,
                                 Title = "Page",
                                 Inner = "# Hello Development",
-                                Saved = false
+                                Saved = true
+                            },
+                            new Page() {
+                                Id = Guid.NewGuid(),
+                                Title = "Page 2",
+                                Inner = "# Hello Development 2",
+                                Saved = true
+                            },
+                            new Page() {
+                                Id = Guid.NewGuid(),
+                                Title = "Page 3",
+                                Inner = "# Hello Development 3",
+                                Saved = true
                             }
+
                         }
                     }
                 },
@@ -66,5 +79,36 @@ namespace Note.Site.Components
             StateHasChanged();
         }
 
+
+        protected override async Task OnParametersSetAsync()
+        {
+            await Task.Delay(1000);
+        }
+
+        protected override async Task OnInitializedAsync()
+        {
+        }
+
+
+        public async Task AutoSave()
+        {
+            while (true)
+            {
+                foreach (var book in Model.Books)
+                {
+                    foreach (var page in book.Pages)
+                    {
+                        if (!page.Saved)
+                        {
+                            // timeout instead of logic
+                            await Task.Delay(1000);
+                            page.Saved = true;
+                            StateHasChanged();
+                        }
+                    }
+                }
+
+            }
+        }
     }
 }

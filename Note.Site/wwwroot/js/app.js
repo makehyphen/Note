@@ -11,15 +11,31 @@ var setDarkMode = function (isDarkModeEnabled) {
 }
 
 /// Render markdown
+let alreadyAddedEvent = false;
+var renderMarkdown = function (doItAgain) {
+    if (!alreadyAddedEvent) {
+        let textareaElement = document.getElementById('div_editor');
+        let previewElement = document.getElementById('div_markdown');
 
-var renderMarkdown = function () {
-    let textareaElement = document.getElementById('div_editor');
-    let previewElement = document.getElementById('div_markdown');
+        if (doItAgain) {
+            textareaElement.addEventListener("keyup", (ev) => {
+                previewElement.innerHTML = marked(ev.target.value);
+                doItAgain = false;
+            });
 
-    textareaElement.addEventListener("keyup", (ev) => {
-        previewElement.innerHTML = marked(ev.target.value);
-    });
+            previewElement.innerHTML = marked(value);
+
+            alreadyAddedEvent = true;
+        }
+
+    }
 }
+
+var renderMarkdownNow = function (value) {
+    let previewElement = document.getElementById('div_markdown');
+    previewElement.innerHTML = marked(value);
+}
+
 
 /// Scroll align
 

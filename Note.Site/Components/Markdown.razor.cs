@@ -16,6 +16,27 @@ namespace Note.Site.Components
         [Inject]
         public IJSRuntime JSRuntime { get; set; }
 
+        public string textareaValue;
+        public string TextareaValue
+        {
+            set
+            {
+                textareaValue = value;
+                Data.SelectedPage.Inner = textareaValue;
+                Data.SelectedPage.Saved = false;
+            }
+
+            get
+            {
+                if (Data.SelectedPage != null)
+                {
+                    return Data.SelectedPage.Inner;
+                }
+
+                return textareaValue;
+            }
+        }
+
         #region Header
 
         public async Task SetDarkModeToggle()
@@ -36,15 +57,23 @@ namespace Note.Site.Components
 
         #region Markdown
 
-        public string TextareaValue { get; set; }
-
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
-                await JSRuntime.InvokeVoidAsync("renderMarkdown");
                 await JSRuntime.InvokeVoidAsync("setState", Data.Settings.IsScrollAlligmentEnabled);
                 await JSRuntime.InvokeVoidAsync("reset");
+            }
+
+            // Add event listener again, will be discarded if already added :)
+            await JSRuntime.InvokeVoidAsync("renderMarkdown", true);
+        }
+
+        protected override async Task OnParametersSetAsync()
+        {
+            if (Data.SelectedPage != null)
+            {
+                await JSRuntime.InvokeVoidAsync("renderMarkdownNow", TextareaValue);
             }
         }
 
