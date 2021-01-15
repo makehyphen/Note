@@ -1,4 +1,27 @@
-﻿console.log("syncscroll.js loaded")
+﻿
+/// Dark mode
+
+var setDarkMode = function (isDarkModeEnabled) {
+
+    if (isDarkModeEnabled) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+}
+
+/// Render markdown
+
+var renderMarkdown = function () {
+    let textareaElement = document.getElementById('div_editor');
+    let previewElement = document.getElementById('div_markdown');
+
+    textareaElement.addEventListener("keyup", (ev) => {
+        previewElement.innerHTML = marked(ev.target.value);
+    });
+}
+
+/// Scroll align
 
 var Enabled = true;
 var Width = 'Width';
@@ -16,7 +39,6 @@ var names = {};
 
 var setState = function (enabled) {
     Enabled = enabled;
-    setStyle(enabled);
 }
 
 var reset = function () {
@@ -104,7 +126,7 @@ var reset = function () {
 
                             var selector = "#app > div > div.app-panel-right.col-right.flex-1.float-left > div.container.clearfix.app-text-container.pb-3 > div.col-6.float-left.pl-textarea.app-textarea-container.overflow-hidden.pr-1"
                             var element = document.querySelector(selector);
-            
+
                             if (element.className.indexOf("pt-4") < -1) {
                                 element.classList.add("pt-4");
                             }
@@ -114,9 +136,4 @@ var reset = function () {
             }
         }, 0);
     }
-}
-
-var setStyle = function () { 
-
-
 }
