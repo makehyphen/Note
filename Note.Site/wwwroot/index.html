@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Note</title>
     <base href="/" />
-    <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
-    <link href="css/app.css" rel="stylesheet" />
+
+    <!-- Libraries CSS -->
+    <link href="lib/primer.min.css" rel="stylesheet" />
+
+    <!-- App CSS -->
+    <link id="app-css" href="css/app.css" rel="stylesheet" />
+
     <link href="manifest.json" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
 </head>
@@ -18,11 +23,15 @@
     </div>
 
     <script src="_framework/blazor.webassembly.js"></script>
-    <script src="scripts/marked.min.js"></script>
-    <script src="scripts/darkmode.js"></script>
-    <script src="scripts/syncscroll.js"></script>
-    <script src="scripts/app.js"></script>
+
+    <!-- Libraries JS -->
+    <script src="lib/marked.min.js"></script>
+
+    <!-- Libraries JS -->
+    <script id="app-js" src="js/app.js"></script>
+
     <!--<script>navigator.serviceWorker.register('service-worker.js');</script>-->
+
 </body>
 
 </html>

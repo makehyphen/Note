@@ -470,7 +470,7 @@ button:focus {
 }
 
 .font-madoni {
-    font-family: "Bodoni Moda 11pt" !important;
+    font-family: "Bodoni Moda" !important;
     font-style: italic;
     /*background: linear-gradient(to right, #0F2027 0%, #203A43 0%, #2C5364 100%);*/
     /* background: linear-gradient(to right, #f12711 0%, #f5af19 100%); */
