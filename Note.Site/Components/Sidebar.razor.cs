@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using Note.Site.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,9 @@ namespace Note.Site.Components
     {
         [CascadingParameter]
         public CascadeData Data { get; set; }
+
+        [Inject]
+        public IJSRuntime JSRuntime { get; set; }
 
         public void UpdateCollapsed()
         {
@@ -30,10 +34,13 @@ namespace Note.Site.Components
         public void CreateBookPage() { }
         public void DeleteBookPage() { }
 
-        public async Task SelectBookPage(Guid id)
+        public async Task SelectBookPage(Guid bookId, Guid pageId)
         {
-            Data.History.SelectedPageId = id;
-            Data.Callback();
+            Data.History.SelectedBookId = bookId;
+            Data.History.SelectedPageId = pageId;
+            await InvokeAsync(Data.Callback);
+            //await InvokeAsync(StateHasChanged);
+            //await JSRuntime.InvokeVoidAsync("renderMarkdown");
         }
 
         #endregion

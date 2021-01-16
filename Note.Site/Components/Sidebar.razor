@@ -83,7 +83,7 @@
             </div>
             @foreach (var bookpage in book.Pages)
             {
-                <a  @onclick="() => SelectBookPage(bookpage.Id)" class="app-panel-left-item pl-6 pr-2 d-flex  @(Data.SelectedPage == null || bookpage.Id != Data.SelectedPage.Id ? "" : "app-panel-left-item-active")">
+                <a @onclick="() => SelectBookPage( book.Id, bookpage.Id)" class="app-panel-left-item pl-6 pr-2 d-flex  @(Data.SelectedPage == null || bookpage.Id != Data.SelectedPage.Id ? "" : "app-panel-left-item-active")">
                     <div href="" class="app-panel-left-item-text css-truncate css-truncate-overflow">@bookpage.Title</div>
                     <div class="app-panel-left-item-buttons anim-fade-in mb-2">
                         <button class="btn-octicon app-octicon app-octicon-hover app-octicon-working tooltipped ml-1 tooltipped-s pl-3"

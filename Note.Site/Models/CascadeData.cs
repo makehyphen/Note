@@ -15,6 +15,9 @@ namespace Note.Site.Models
 
         public Action Callback { get; set; }
 
+        public bool SavingEnabled { get; set; }
+
+        private Book selectedBook;
         public Book SelectedBook
         {
             get
@@ -25,11 +28,12 @@ namespace Note.Site.Models
                 }
                 else
                 {
-                    return Books.SingleOrDefault(x => x.Id == History.SelectedBookId);
+                    selectedBook = Books.ToList().SingleOrDefault(x => x.Id == History.SelectedBookId);
+                    return selectedBook;
                 }
             }
             set
-            { SelectedBook = value; }
+            { selectedBook = value; }
         }
         public Page SelectedPage
         {

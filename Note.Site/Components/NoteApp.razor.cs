@@ -3,17 +3,21 @@ using Microsoft.JSInterop;
 using Note.Site.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Note.Site.Components
 {
-    public class AppBase : ComponentBase
+    public class NoteAppBase : ComponentBase
     {
         [Inject]
         public IJSRuntime JSRuntime { get; set; }
 
         public static Guid _bookId = Guid.NewGuid();
         public static Guid _pageId = Guid.NewGuid();
+        public static bool _autosaveStarted { get; set; } = false;
+
+
 
         public CascadeData Model { get; set; } = new CascadeData()
         {
@@ -34,8 +38,21 @@ namespace Note.Site.Components
                                 Id = _pageId,
                                 Title = "Page",
                                 Inner = "# Hello Development",
-                                Saved = false
+                                Saved = true
+                            },
+                            new Page() {
+                                Id = Guid.NewGuid(),
+                                Title = "Page 2",
+                                Inner = "# Hello Development 2",
+                                Saved = true
+                            },
+                            new Page() {
+                                Id = Guid.NewGuid(),
+                                Title = "Page 3",
+                                Inner = "# Hello Development 3",
+                                Saved = true
                             }
+
                         }
                     }
                 },
@@ -48,9 +65,9 @@ namespace Note.Site.Components
             {
                 SelectedBookId = _bookId,
                 SelectedPageId = _pageId
-            }
+            },
+            SavingEnabled = false
         };
-
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
@@ -58,6 +75,28 @@ namespace Note.Site.Components
             {
                 Model.Callback = MyStateHasChanged;
                 await JSRuntime.InvokeVoidAsync("setDarkMode", Model.Settings.IsDarkModeEnabled);
+
+                await Task.Run(async () =>
+                {
+                    _autosaveStarted = true;
+
+                    var timer = new Timer(new TimerCallback(async _ =>
+                    {
+                        foreach (var book in Model.Books)
+                        {
+                            foreach (var page in book.Pages)
+                            {
+                                if (!page.Saved)
+                                {
+                                    // Logic to save here!
+
+                                    page.Saved = true;
+                                    StateHasChanged();
+                                }
+                            }
+                        }
+                    }), null, 0, 5000);
+                });
             }
         }
 
@@ -65,6 +104,5 @@ namespace Note.Site.Components
         {
             StateHasChanged();
         }
-
     }
 }
