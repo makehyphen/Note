@@ -15,6 +15,7 @@ namespace Note.Site.Components
 
         public static Guid _bookId = Guid.NewGuid();
         public static Guid _pageId = Guid.NewGuid();
+        public static bool _autosaveStarted { get; set; } = false;
 
 
 
@@ -68,26 +69,17 @@ namespace Note.Site.Components
             SavingEnabled = false
         };
 
-
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
                 Model.Callback = MyStateHasChanged;
                 await JSRuntime.InvokeVoidAsync("setDarkMode", Model.Settings.IsDarkModeEnabled);
-            }
-        }
 
-        public void MyStateHasChanged()
-        {
-            StateHasChanged();
-
-            if (!Model.SavingEnabled)
-            {
-                Model.SavingEnabled = true;
-
-                Task.Run(async () =>
+                await Task.Run(async () =>
                 {
+                    _autosaveStarted = true;
+
                     var timer = new Timer(new TimerCallback(async _ =>
                     {
                         foreach (var book in Model.Books)
@@ -97,7 +89,7 @@ namespace Note.Site.Components
                                 if (!page.Saved)
                                 {
                                     // Logic to save here!
-                                    
+
                                     page.Saved = true;
                                     StateHasChanged();
                                 }
@@ -106,6 +98,11 @@ namespace Note.Site.Components
                     }), null, 0, 5000);
                 });
             }
+        }
+
+        public void MyStateHasChanged()
+        {
+            StateHasChanged();
         }
     }
 }

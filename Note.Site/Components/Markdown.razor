@@ -94,21 +94,25 @@
     </div>
     <!-- #endregion -->
     <!-- #region Markdown -->
-    <div class="container clearfix app-text-container pb-3 @(Data.SelectedPage == null ? "d-none" : "")">
-        <div class="@( Data.Settings.IsMarkdownPreviewEnabled ? "col-6" : "col-12"  ) float-left pl-textarea app-textarea-container overflow-hidden pr-1">
-            
+
+    @if (Data.SelectedPage != null)
+    {
+        <div class="container clearfix app-text-container pb-3 @(Data.SelectedPage == null ? "d-none" : "")">
+            <div class="@( Data.Settings.IsMarkdownPreviewEnabled ? "col-6" : "col-12"  ) float-left pl-textarea app-textarea-container overflow-hidden pr-1">
+
                 <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="div_editor" @bind-value="@TextareaValue" @bind-value:event="oninput"
                           class="app-textarea pb-4 syncscroll" name="scrollElement"></textarea>
-            
-        </div>
 
-        <div class="@( Data.Settings.IsMarkdownPreviewEnabled ? "col-6 anim-fade-in" : "d-none  anim-fade-in"  ) float-left pl-textarea app-textarea-container pr-4 pb-4 syncscroll"
-             name="scrollElement">
-            <div id="div_markdown" class="markdown-body">
-                @*@MarkdownValue*@
+            </div>
+
+            <div class="@( Data.Settings.IsMarkdownPreviewEnabled ? "col-6 anim-fade-in" : "d-none  anim-fade-in"  ) float-left pl-textarea app-textarea-container pr-4 pb-4 syncscroll"
+                 name="scrollElement">
+                <div id="div_markdown" class="markdown-body">
+                    @*@MarkdownValue*@
+                </div>
             </div>
         </div>
-    </div>
+    }
 
     <!-- #endregion -->
 </div>

@@ -21,18 +21,17 @@ var renderMarkdown = function (doItAgain) {
             textareaElement.addEventListener("keyup", (ev) => {
                 previewElement.innerHTML = marked(ev.target.value);
                 doItAgain = false;
+                alreadyAddedEvent = true;
             });
-
-            previewElement.innerHTML = marked(value);
-
-            alreadyAddedEvent = true;
         }
     }
 }
 
 var renderMarkdownNow = function (value) {
     let previewElement = document.getElementById('div_markdown');
-    previewElement.innerHTML = marked(value);
+    if (previewElement != null) {
+        previewElement.innerHTML = marked(value);
+    }
 }
 
 /// Scroll align

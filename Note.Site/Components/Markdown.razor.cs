@@ -24,11 +24,6 @@ namespace Note.Site.Components
                 textareaValue = value;
                 Data.SelectedPage.Inner = textareaValue;
                 Data.SelectedPage.Saved = false;
-
-                if (!Data.SavingEnabled)
-                {
-                    InvokeAsync(Data.Callback);
-                }
             }
 
             get
@@ -66,6 +61,7 @@ namespace Note.Site.Components
         {
             if (firstRender)
             {
+                await JSRuntime.InvokeVoidAsync("renderMarkdownNow", TextareaValue);
                 await JSRuntime.InvokeVoidAsync("setState", Data.Settings.IsScrollAlligmentEnabled);
                 await JSRuntime.InvokeVoidAsync("reset");
             }
