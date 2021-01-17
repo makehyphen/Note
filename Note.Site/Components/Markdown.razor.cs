@@ -16,6 +16,40 @@ namespace Note.Site.Components
         [Inject]
         public IJSRuntime JSRuntime { get; set; }
 
+
+        public string inputBookValue;
+        public string InputBookValue
+        {
+            set
+            {
+                inputBookValue = value;
+                Data.SelectedBook.Name = inputBookValue;
+                Data.SelectedPage.Saved = false;
+                Data.SaveNeeded = true;
+            }
+            get
+            {
+                return Data.SelectedBook != null ? Data.SelectedBook.Name : inputBookValue;
+            }
+        }
+
+        public string inputPageValue;
+        public string InputPageValue
+        {
+            set
+            {
+                inputPageValue = value;
+                Data.SelectedPage.Title = inputPageValue;
+                Data.SelectedPage.Saved = false;
+                Data.SaveNeeded = true;
+            }
+            get
+            {
+                return Data.SelectedPage != null ? Data.SelectedPage.Title : inputBookValue;
+            }
+        }
+
+
         public string textareaValue;
         public string TextareaValue
         {
@@ -65,6 +99,7 @@ namespace Note.Site.Components
                 await JSRuntime.InvokeVoidAsync("renderMarkdownNow", TextareaValue);
                 await JSRuntime.InvokeVoidAsync("setState", Data.Settings.IsScrollAlligmentEnabled);
                 await JSRuntime.InvokeVoidAsync("reset");
+                await JSRuntime.InvokeVoidAsync("setWidthInput");
             }
 
             // Add event listener again, will be discarded if already added :)
