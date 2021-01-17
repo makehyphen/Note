@@ -15,9 +15,6 @@ namespace Note.Site.Components
 
         public static Guid _bookId = Guid.NewGuid();
         public static Guid _pageId = Guid.NewGuid();
-        public static bool _autosaveStarted { get; set; } = false;
-
-
 
         public CascadeData Model { get; set; } = new CascadeData()
         {
@@ -66,7 +63,7 @@ namespace Note.Site.Components
                 SelectedBookId = _bookId,
                 SelectedPageId = _pageId
             },
-            SavingEnabled = false
+            SaveNeeded = false
         };
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -78,24 +75,27 @@ namespace Note.Site.Components
 
                 await Task.Run(async () =>
                 {
-                    _autosaveStarted = true;
-
                     var timer = new Timer(new TimerCallback(async _ =>
                     {
-                        foreach (var book in Model.Books)
+                        if (Model.SaveNeeded)
                         {
-                            foreach (var page in book.Pages)
+                            foreach (var book in Model.Books)
                             {
-                                if (!page.Saved)
+                                foreach (var page in book.Pages)
                                 {
-                                    // Logic to save here!
+                                    if (!page.Saved)
+                                    {
+                                        // Logic to save here!
 
-                                    page.Saved = true;
-                                    StateHasChanged();
+                                        page.Saved = true;
+                                        StateHasChanged();
+                                    }
                                 }
                             }
                         }
-                    }), null, 0, 5000);
+
+                        Model.SaveNeeded = false;
+                    }), null, 0, 2000);
                 });
             }
         }

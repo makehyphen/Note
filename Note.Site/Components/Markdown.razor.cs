@@ -24,6 +24,7 @@ namespace Note.Site.Components
                 textareaValue = value;
                 Data.SelectedPage.Inner = textareaValue;
                 Data.SelectedPage.Saved = false;
+                Data.SaveNeeded = true;
             }
 
             get
