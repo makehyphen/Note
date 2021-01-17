@@ -34,6 +34,21 @@ var renderMarkdownNow = function (value) {
     }
 }
 
+/// Input width
+
+var setWidthInput = function () {
+    var bookElement = document.getElementById("inputBook");
+    var pageElement = document.getElementById("inputPage");
+
+    if (bookElement != undefined) {
+        bookElement.style.width = ((bookElement.value.length + 0) * 8) + 'px';
+    }
+
+    if (pageElement != undefined) {
+        pageElement.style.width = ((pageElement.value.length + 0) * 8) + 'px';
+    }
+}
+
 /// Scroll align
 
 var Enabled = true;

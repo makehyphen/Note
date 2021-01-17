@@ -240,6 +240,10 @@ button:focus {
     margin-top: 18px !important;
 }
 
+.app-input-arrow {
+    line-height: 8px;
+}
+
 .col-collapsed {
     width: 50px;
     background-color: var(--app-panel-left-bg-color);
@@ -256,6 +260,21 @@ button:focus {
     /*width: 85%;*/
 }
 
+
+.app-input {
+    border: none;
+    resize: none;
+    background-color: var(--app-textarea-bg-color);
+    margin-top: -15px !important;
+    align-items: center;
+    /* margin-bottom: 1px; */
+    font-size: 12px;
+    line-height: 10px;
+    font-weight: 400;
+    text-align: left;
+    text-transform: uppercase;
+    color: var(--app-panel-right-header-left-color);
+}
 
 .app-textarea {
     width: 100%;

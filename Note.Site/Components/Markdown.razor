@@ -8,12 +8,17 @@
             {
                 <div class="mr-saved @(Data.SelectedPage == null ? "d-none" : "d-flex")">
                     <div>NOTE</div>
-                    <div class="ml-1 mr-2">→</div>
-                    <div>@(Data.SelectedPage == null ?  default : Data.SelectedBook.Name)</div>
-                    <div class="ml-1 mr-2">→</div>
-                    <div>@(Data.SelectedPage == null ?  default : Data.SelectedPage.Title)</div>
+                    <div class="ml-2 mr-2 app-input-arrow">→</div>
+                    <div>
+                        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" @bind-value="@InputBookValue" @bind-value:event="onchange"
+                               class="app-input" id="inputBook" onkeypress="this.style.width = ((this.value.length + 0) * 8) + 'px';">
+                    </div>
+                    <div class="ml-1 mr-2 app-input-arrow">→</div>
+                    <div>
+                        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" @bind-value="@InputPageValue" @bind-value:event="onchange"
+                               class="app-input" id="inputPage" onkeypress="this.style.width = ((this.value.length + 0) * 8) + 'px';">
+                    </div>
                 </div>
-
 
                 @if (Data.SelectedPage.Saved)
                 {
