@@ -34,13 +34,25 @@ namespace Note.Site.Components
             public string StringContaining { get; set; }
         }
 
+        public bool SearchValueEnabled { get; set; }
+
+        public async Task ToggleSearch()
+        {
+            SearchValueEnabled = !SearchValueEnabled;
+        }
+
+        public async Task ClearInput()
+        {
+            SearchValue = string.Empty;
+        }
+
         private string searchValue;
 
         public string SearchValue
         {
             get
             {
-                return searchValue;
+                return searchValue ?? string.Empty;
             }
 
             set

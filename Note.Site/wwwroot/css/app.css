@@ -618,3 +618,15 @@ button:focus {
     text-transform: uppercase;
     justify-content: space-between;
 }
+
+.app-octicon-add {
+    padding-top: 3px;
+    display: inline-block;
+    margin-left: -5px;
+    line-height: 1;
+    vertical-align: middle;
+    background: transparent;
+    border: 0;
+    margin-bottom: -1px;
+    fill: var(--app-panel-right-header-left-color);
+}

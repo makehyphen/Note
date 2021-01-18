@@ -38,12 +38,23 @@
         </div>
 
         <div class="app-panel-left-header app-panel-left-header-profile pl-4 pr-2 d-flex flex-justify-start">
-            <div class="btn-octicon app-octicon-hover app-octicon-search mr-2">
+
+            <div class="btn-octicon app-octicon-hover app-octicon-add" @onclick="() => CreateBook()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M7.75 2a.75.75 0 01.75.75V7h4.25a.75.75 0 110 1.5H8.5v4.25a.75.75 0 11-1.5 0V8.5H2.75a.75.75 0 010-1.5H7V2.75A.75.75 0 017.75 2z"></path></svg>
+            </div>
+
+            <div class="btn-octicon app-octicon-hover app-octicon-search mr-2" @onclick="() => ToggleSearch()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"></path></svg>
             </div>
+
             <div>
                 <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="app-input-search" placeholder="Search" @bind-value="@SearchValue" @bind-value:event="oninput">
             </div>
+
+            <div class="app-octicon-search @(SearchValue.Length > 0 ? "d-inline anim-fade-in-" : "d-none")" @onclick="() => ClearInput()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path></svg>
+            </div>
+
         </div>
 
         @if (SearchResultList != null)
