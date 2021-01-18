@@ -22,25 +22,160 @@ namespace Note.Site.Components
             //StateHasChanged();
         }
 
-        #region Book
+        #region Search
 
-        public void CreateBook() { }
-        public void DeleteBook() { }
+        public List<SearchResult> SearchResultList { get; set; } = null;
+
+        public class SearchResult
+        {
+            public Guid BookId { get; set; }
+            public Guid PageId { get; set; }
+            public string PageTitle { get; set; }
+            public string StringContaining { get; set; }
+        }
+
+        private string searchValue;
+
+        public string SearchValue
+        {
+            get
+            {
+                return searchValue;
+            }
+
+            set
+            {
+                searchValue = value;
+
+                if (String.IsNullOrEmpty(value))
+                {
+                    SearchResultList = null;
+                }
+                else
+                {
+                    SearchResultList = new List<SearchResult>();
+
+                    foreach (var book in Data.Books)
+                    {
+                        foreach (var page in book.Pages)
+                        {
+                            if (page.Title.Contains(value) || page.Inner.Contains(value))
+                            {
+
+                                var searchResult = new SearchResult()
+                                {
+                                    BookId = book.Id,
+                                    PageId = page.Id,
+                                    PageTitle = page.Title,
+                                    StringContaining = $"{value}..."
+                                };
+
+                                SearchResultList.Add(searchResult);
+                            }
+                        }
+                    }
+                }
+
+                //InvokeAsync(Data.con)
+
+            }
+
+        }
+
 
         #endregion
 
-        #region Page
+        #region Book and page management
 
-        public void CreateBookPage() { }
-        public void DeleteBookPage() { }
+        public async Task DeleteBook(Guid bookId)
+        {
+            var book = Data.Books.Single(x => x.Id == bookId);
+
+
+            if (Data.History.SelectedBookId == bookId)
+            {
+                Data.History.SelectedBookId = default;
+                Data.History.SelectedPageId = default;
+            }
+
+            Data.Books.Remove(book);
+
+            await InvokeAsync(Data.Callback);
+        }
+        public async Task DeleteBookPage(Guid bookId, Guid pageId)
+        {
+            var book = Data.Books.Single(x => x.Id == bookId);
+            var page = book.Pages.Single(x => x.Id == pageId);
+
+
+            if (Data.History.SelectedPageId == pageId)
+            {
+                Data.History.SelectedPageId = default;
+                //Data.SelectedPage = null;
+            }
+
+            Data.SelectedBook.Pages.Remove(page);
+
+            await InvokeAsync(Data.Callback);
+        }
+
+        public async Task HideBook(Guid bookId)
+        {
+            var book = Data.Books.Single(x => x.Id == bookId);
+            book.HiddenPages = !book.HiddenPages;
+
+            await InvokeAsync(Data.Callback);
+        }
+
+        public async Task CreatePage(Guid bookId)
+        {
+            var book = Data.Books.Single(x => x.Id == bookId);
+            var newPage = new Page()
+            {
+                Id = Guid.NewGuid(),
+                Inner = String.Empty,
+                Saved = false,
+                Title = "New page"
+            };
+
+            book.Pages.Add(newPage);
+
+            Data.History.SelectedPageId = newPage.Id;
+            await InvokeAsync(Data.Callback);
+        }
+
+        public async Task CreateBook()
+        {
+            var book = new Book()
+            {
+                HiddenPages = false,
+                Id = Guid.NewGuid(),
+                Name = "New book",
+                Pages = new List<Page>()
+            };
+
+            var page = new Page()
+            {
+                Id = Guid.NewGuid(),
+                Inner = String.Empty,
+                Saved = false,
+                Title = "New page"
+            };
+
+            book.Pages.Add(page);
+
+            Data.Books.Add(book);
+            Data.History.SelectedBookId = book.Id;
+            Data.History.SelectedPageId = page.Id;
+
+            await InvokeAsync(Data.Callback);
+        }
 
         public async Task SelectBookPage(Guid bookId, Guid pageId)
         {
             Data.History.SelectedBookId = bookId;
             Data.History.SelectedPageId = pageId;
             await InvokeAsync(Data.Callback);
-            //await InvokeAsync(StateHasChanged);
-            //await JSRuntime.InvokeVoidAsync("renderMarkdown");
         }
 
         #endregion
