@@ -29,6 +29,7 @@ namespace Note.Site.Components
                 new Book() {
                     Id = _bookId,
                     Name = "Development",
+                    HiddenPages = true,
                     Pages =
                         new List<Page>() {
                             new Page() {

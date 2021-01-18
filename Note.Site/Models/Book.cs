@@ -9,6 +9,7 @@ namespace Note.Site.Models
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public bool HiddenPages { get; set; }
         public List<Page> Pages { get; set; }
     }
 }

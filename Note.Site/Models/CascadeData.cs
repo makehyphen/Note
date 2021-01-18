@@ -38,7 +38,14 @@ namespace Note.Site.Models
         {
             get
             {
-                return SelectedBook == null ? default : SelectedBook.Pages.SingleOrDefault(x => x.Id == History.SelectedPageId);
+                if (History.SelectedPageId == default)
+                {
+                    return default;
+                }
+                else
+                {
+                    return History.SelectedPageId == null ? default : SelectedBook.Pages.SingleOrDefault(x => x.Id == History.SelectedPageId);
+                }
             }
             set => SelectedPage = value;
         }

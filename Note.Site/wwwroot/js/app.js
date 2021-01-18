@@ -42,10 +42,26 @@ var setWidthInput = function () {
 
     if (bookElement != undefined) {
         bookElement.style.width = ((bookElement.value.length + 0) * 8) + 'px';
+
+        bookElement.addEventListener("keypress", (e) => {
+            e.srcElement.style.width = ((e.srcElement.value.length + 0) * 8) + 'px';
+        });
+
+        bookElement.addEventListener("change", (e) => {
+            e.srcElement.style.width = ((e.srcElement.value.length + 0) * 8) + 'px';
+        });
     }
 
     if (pageElement != undefined) {
         pageElement.style.width = ((pageElement.value.length + 0) * 8) + 'px';
+
+        pageElement.addEventListener("keypress", (e) => {
+            e.srcElement.style.width = ((e.srcElement.value.length + 0) * 8) + 'px';
+        });
+
+        pageElement.addEventListener("change", (e) => {
+            e.srcElement.style.width = ((e.srcElement.value.length + 0) * 8) + 'px';
+        });
     }
 }
 

@@ -134,16 +134,22 @@ button:focus {
 }
 
 .app-octicon-saved {
-    margin-bottom: 1px;
+    position: relative;
+    top: 2px;
 }
 
     .app-octicon-saved > svg {
         fill: var(--app-octicon-saved-color);
     }
 
-.app-octicon-error > svg {
-    fill: var(--app-octicon-saved-error);
+.app-octicon-error {
+    position: relative;
+    top: 2px;
 }
+
+    .app-octicon-error > svg {
+        fill: var(--app-octicon-saved-error);
+    }
 
 .app-octicon-working > svg {
     fill: var(--app-panel-right-header-left-color);
@@ -159,7 +165,7 @@ button:focus {
     font-size: 14px;
     text-transform: none;
     margin-bottom: 0px;
-    margin-top: 12px !important;
+    margin-top: 15px !important;
 }
 
     .app-panel-left-header-profile:hover > .app-panel-left-item-buttons {
@@ -275,6 +281,11 @@ button:focus {
     text-transform: uppercase;
     color: var(--app-panel-right-header-left-color);
 }
+
+    .app-input:focus {
+        border: none !important;
+        outline: none;
+    }
 
 .app-textarea {
     width: 100%;
@@ -550,4 +561,72 @@ button:focus {
 
 .app-login-subtext-emoji {
     font-weight: 800;
+}
+
+
+.btn-octicon-pages {
+    display: inline-block;
+    margin-left: 2px;
+    line-height: 1;
+    color: #586069;
+    vertical-align: middle;
+    background: transparent;
+    border: 0;
+    margin-bottom: -1px;
+}
+
+.app-input-search {
+    border: none;
+    resize: none;
+    background-color: var(--app-panel-left-bg-color);
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+    height: 20px;
+    font-size: 15px;
+    width: 100%;
+    color: var(--app-panel-right-header-left-color);
+    margin-left: -3px !important;
+}
+
+
+.app-input-search:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+
+.app-octicon-search {
+    padding-top: 3px;
+    display: inline-block;
+    margin-left: -2px;
+    line-height: 1;
+    vertical-align: middle;
+    background: transparent;
+    border: 0;
+    margin-bottom: -1px;
+    fill: var(--app-panel-right-header-left-color);
+}
+.app-input-search > svg {
+    fill: var(--app-panel-right-header-left-color);
+}
+
+
+.app-panel-left-result {
+    font-weight: 500;
+    text-align: left;
+    text-transform: uppercase;
+    justify-content: space-between;
+}
+
+.app-octicon-add {
+    padding-top: 3px;
+    display: inline-block;
+    margin-left: -5px;
+    line-height: 1;
+    vertical-align: middle;
+    background: transparent;
+    border: 0;
+    margin-bottom: -1px;
+    fill: var(--app-panel-right-header-left-color);
 }
