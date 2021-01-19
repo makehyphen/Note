@@ -175,7 +175,7 @@
     <div class="app-footer-block pb-3 @( Data.Settings.IsSidebarCollapsed ? "d-none" : "d-inline"  )">
         <div class="app-panel-left-header  app-footer-text d-flex flex-justify-center">
             <a class="" target="_blank" href="https://note.hyphen.so">Note&nbsp;</a> by <a class="font-madoni"
-                                                                                            target="_blank" href="https://hyphen.so">&nbsp;Hyphen</a>
+                                                                                           target="_blank" href="https://hyphen.so">&nbsp;Hyphen</a>
         </div>
         <div class="d-flex flex-justify-center mt-1">
             <div class="app-footer-buttons anim-fade-in">
@@ -206,7 +206,7 @@
                         </path>
                     </svg>
                 </a>
-                <a target="_blank" href="/logout"
+                <a @onclick="Logout"
                    class="btn-octicon app-octicon app-octicon-hover app-octicon-working tooltipped ml-1 tooltipped-n pl-3"
                    type="button" aria-label="Sign out">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">

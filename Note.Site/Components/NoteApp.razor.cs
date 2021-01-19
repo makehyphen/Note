@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Note.Site.Models;
+using Note.Site.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -13,91 +14,95 @@ namespace Note.Site.Components
         [Inject]
         public IJSRuntime JSRuntime { get; set; }
 
+        [Inject]
+        public DataService DataService { get; set; }
+
+        public static bool SavedStarted = false;
+
         public static Guid _bookId = Guid.NewGuid();
         public static Guid _pageId = Guid.NewGuid();
 
-        public CascadeData Model { get; set; } = new CascadeData()
-        {
-            Settings = new Settings()
-            {
-                IsDarkModeEnabled = true,
-                IsMarkdownPreviewEnabled = true,
-                IsScrollAlligmentEnabled = true,
-                IsSidebarCollapsed = false
-            },
-            Books = new List<Book>() {
-                new Book() {
-                    Id = _bookId,
-                    Name = "Development",
-                    HiddenPages = true,
-                    Pages =
-                        new List<Page>() {
-                            new Page() {
-                                Id = _pageId,
-                                Title = "Page",
-                                Inner = "# Hello Development",
-                                Saved = true
-                            },
-                            new Page() {
-                                Id = Guid.NewGuid(),
-                                Title = "Page 2",
-                                Inner = "# Hello Development 2",
-                                Saved = true
-                            },
-                            new Page() {
-                                Id = Guid.NewGuid(),
-                                Title = "Page 3",
-                                Inner = "# Hello Development 3",
-                                Saved = true
-                            }
+        public bool Loading { get; set; } = false;
 
-                        }
-                    }
-                },
-            User = new User()
+        public CascadeData Model { get; set; }
+
+
+        public async Task UseLocalStorage()
+        {
+            Loading = true;
+            StateHasChanged();
+
+            var isDarkModeCurrent = await JSRuntime.InvokeAsync<bool>("getPreferedColor");
+            var data = await DataService.GetCascadeDataAsync();
+
+            if (data == null)
             {
-                Username = "Emiliano",
-                ImageUrl = "https://avatars2.githubusercontent.com/u/13499480?s=460&u=dc817bc92bd7144f068f26107fa0d6bbf7be8471&v=4?v=3&s=48"
-            },
-            History = new History()
+                data = await DataService.CreateCascadeDataAsync(isDarkModeCurrent);
+            }
+
+            Model = data;
+            Model.User.LoggedIn = true;
+            Model.Callback = StateHasChanged;
+
+            await JSRuntime.InvokeVoidAsync("setDarkMode", Model.Settings.IsDarkModeEnabled);
+
+            Loading = false;
+            StateHasChanged();
+        }
+
+        public async Task Logout()
+        {
+            Loading = true;
+            StateHasChanged();
+
+            Model.User.LoggedIn = false;
+            await DataService.SetCascadeDataAsync(Model);
+
+            Loading = false;
+            StateHasChanged();
+        }
+
+        protected override async Task OnInitializedAsync()
+        {
+            var data = await DataService.GetCascadeDataAsync();
+
+            if (data != null)
             {
-                SelectedBookId = _bookId,
-                SelectedPageId = _pageId
-            },
-            SaveNeeded = false
-        };
+                Model = data;
+            }
+        }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
-                Model.Callback = StateHasChanged;
-                await JSRuntime.InvokeVoidAsync("setDarkMode", Model.Settings.IsDarkModeEnabled);
-
-                await Task.Run(async () =>
+                if (!SavedStarted)
                 {
-                    var timer = new Timer(new TimerCallback(async _ =>
-                    {
-                        if (Model.SaveNeeded)
-                        {
-                            foreach (var book in Model.Books)
-                            {
-                                foreach (var page in book.Pages)
-                                {
-                                    if (!page.Saved)
-                                    {
-                                        // Logic to save here!
+                    SavedStarted = true;
 
-                                        page.Saved = true;
-                                        StateHasChanged();
+                    await Task.Run(async () =>
+                    {
+                        var timer = new Timer(new TimerCallback(async _ =>
+                        {
+                            if (Model != null)
+                            {
+                                foreach (var book in Model.Books)
+                                {
+                                    foreach (var page in book.Pages)
+                                    {
+                                        if (!page.Saved)
+                                        {
+                                            page.Saved = true;
+                                        }
                                     }
                                 }
-                            }
-                        }
 
-                        Model.SaveNeeded = false;
-                    }), null, 0, 2000);
-                });
+                                await DataService.SetCascadeDataAsync(Model);
+                                StateHasChanged();
+                            }
+                        }), null, 0, 1000);
+                    });
+                }
             }
         }
     }

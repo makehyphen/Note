@@ -15,6 +15,24 @@
 
     <link href="manifest.json" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+
+    <script>
+        var data = JSON.parse(localStorage.getItem("data"));
+        var isDarkModeEnabled;
+
+        if (data == null) {
+            isDarkModeEnabled = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        } else {
+            isDarkModeEnabled = data.settings.isDarkModeEnabled;
+        }
+
+
+        if (isDarkModeEnabled) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    </script>
 </head>
 
 <body>

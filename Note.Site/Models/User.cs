@@ -9,5 +9,6 @@ namespace Note.Site.Models
     {
         public string Username { get; set; }
         public string ImageUrl { get; set; }
+        public bool LoggedIn { get; set; }
     }
 }

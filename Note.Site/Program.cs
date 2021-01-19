@@ -21,6 +21,8 @@ namespace Note.Site
             builder.Services.AddBlazoredLocalStorage(config =>
                 config.JsonSerializerOptions.WriteIndented = true);
 
+            builder.Services.AddScoped<Services.DataService>();
+
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             await builder.Build().RunAsync();

@@ -13,11 +13,17 @@ namespace Note.Site.Models
         #endregion
 
         public User User { get; set; }
+
         public Settings Settings { get; set; }
         public List<Book> Books { get; set; }
         public History History { get; set; }
 
+        [Newtonsoft.Json.JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
         private Book selectedBook;
+
+        [Newtonsoft.Json.JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
         public Book SelectedBook
         {
             get
@@ -34,6 +40,8 @@ namespace Note.Site.Models
             }
             set => selectedBook = value;
         }
+        [Newtonsoft.Json.JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
         public Page SelectedPage
         {
             get
@@ -51,13 +59,16 @@ namespace Note.Site.Models
         }
 
         #region Callback
+
+        [Newtonsoft.Json.JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
         public Action Callback { get; set; }
 
         #endregion
 
         #region Saving
 
-        public bool SaveNeeded { get; set; }
+        //public bool SaveNeeded { get; set; }
 
         #endregion
 
