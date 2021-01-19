@@ -8,5 +8,7 @@ namespace Note.Site.Components
 {
     public class LoginBase : ComponentBase
     {
+        [Parameter]
+        public EventCallback UseLocalStorage { get; set; }
     }
 }

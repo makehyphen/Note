@@ -10,6 +10,27 @@ var setDarkMode = function (isDarkModeEnabled) {
     }
 }
 
+
+var setDarkModeStart = function () {
+
+    var isDarkModeEnabled = localStorage.getItem("darkmode");
+
+    if (isDarkModeEnabled == undefined) {
+        isDarkModeEnabled = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        localStorage.setItem("darkmode", isDarkModeEnabled);
+    }
+
+    if (isDarkModeEnabled) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+}
+
+var getPreferedColor = function () {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
 /// Render markdown
 let alreadyAddedEvent = false;
 var renderMarkdown = function (doItAgain) {

@@ -16,6 +16,9 @@ namespace Note.Site.Components
         [Inject]
         public IJSRuntime JSRuntime { get; set; }
 
+        [Parameter]
+        public EventCallback Logout { get; set; }
+
         public void UpdateCollapsed()
         {
             Data.Settings.IsSidebarCollapsed = !Data.Settings.IsSidebarCollapsed;
@@ -112,7 +115,7 @@ namespace Note.Site.Components
 
             Data.Books.Remove(book);
 
-            Data.SaveNeeded = true;
+            //Data.SaveNeeded = true;
             await InvokeAsync(Data.Callback);
         }
         public async Task DeleteBookPage(Guid bookId, Guid pageId)
@@ -129,7 +132,7 @@ namespace Note.Site.Components
 
             Data.SelectedBook.Pages.Remove(page);
 
-            Data.SaveNeeded = true;
+            //Data.SaveNeeded = true;
             await InvokeAsync(Data.Callback);
         }
 
@@ -154,9 +157,10 @@ namespace Note.Site.Components
 
             book.Pages.Add(newPage);
 
+            Data.SelectedBook.HiddenPages = false;
             Data.History.SelectedPageId = newPage.Id;
 
-            Data.SaveNeeded = true;
+            //Data.SaveNeeded = true;
             await InvokeAsync(Data.Callback);
         }
 
@@ -184,13 +188,13 @@ namespace Note.Site.Components
             Data.History.SelectedBookId = book.Id;
             Data.History.SelectedPageId = page.Id;
 
-            Data.SaveNeeded = true;
+            //Data.SaveNeeded = true;
             await InvokeAsync(Data.Callback);
         }
 
         public async Task RenameCallback()
         {
-            Data.SaveNeeded = true;
+            //Data.SaveNeeded = true;
             await InvokeAsync(Data.Callback);
         }
 
