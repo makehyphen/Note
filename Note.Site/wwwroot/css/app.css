@@ -536,9 +536,14 @@ button:focus {
     overflow: hidden;
 }
 
+.btn-login {
+    background: transparent !important;
+}
+
 .btn-login > svg {
     height: 24px;
     fill: var(--app-panel-right-header-left-color);
+    
 }
 
 .btn-login:hover > svg {
