@@ -69,6 +69,7 @@ namespace Note.Site.Components
             if (data != null)
             {
                 Model = data;
+                Model.Callback = StateHasChanged;
             }
         }
 
