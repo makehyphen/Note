@@ -2,6 +2,12 @@
   <img src="https://i.gyazo.com/3c91cde5522e8b5b29ece986d295e6c6.png" alt="Note">
 </div>
 
+
+<p align="middle">
+  <img src="https://github.com/makehyphen/Note/workflows/Build%20debug/badge.svg" alt="Note">
+    <img src="https://github.com/makehyphen/Note/workflows/Build%20release/badge.svg" alt="Note">
+<p>
+
 ####
 
 <p align="middle">

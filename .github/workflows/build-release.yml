@@ -1,5 +1,5 @@
 name: Build release
-on: [push, pull_request]
+on: [pull_request]
 env:
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 5.0.x
