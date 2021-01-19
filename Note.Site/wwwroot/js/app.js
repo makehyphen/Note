@@ -18,11 +18,13 @@ var renderMarkdown = function (doItAgain) {
         let previewElement = document.getElementById('div_markdown');
 
         if (doItAgain) {
-            textareaElement.addEventListener("keyup", (ev) => {
-                previewElement.innerHTML = marked(ev.target.value);
-                doItAgain = false;
-                alreadyAddedEvent = true;
-            });
+            if (previewElement != null) {
+                textareaElement.addEventListener("keyup", (ev) => {
+                    previewElement.innerHTML = marked(ev.target.value);
+                    doItAgain = false;
+                    alreadyAddedEvent = true;
+                });
+            }
         }
     }
 }

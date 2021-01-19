@@ -71,7 +71,7 @@ namespace Note.Site.Components
         {
             if (firstRender)
             {
-                Model.Callback = MyStateHasChanged;
+                Model.Callback = StateHasChanged;
                 await JSRuntime.InvokeVoidAsync("setDarkMode", Model.Settings.IsDarkModeEnabled);
 
                 await Task.Run(async () =>
@@ -99,11 +99,6 @@ namespace Note.Site.Components
                     }), null, 0, 2000);
                 });
             }
-        }
-
-        public void MyStateHasChanged()
-        {
-            StateHasChanged();
         }
     }
 }
