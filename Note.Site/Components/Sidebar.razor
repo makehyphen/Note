@@ -89,22 +89,31 @@
         {
             <div class="app-panel-left-header pl-4 pr-2 d-flex">
                 <div class="app-panel-left-header-text css-truncate css-truncate-overflow d-flex flex-items-center">
+
+                    @if (book.Pages.Count > 0)
+                    {
+                        <a class="btn-octicon-pages app-octicon-hover app-octicon-working tooltipped tooltipped-s mr-2"
+                           type="button" aria-label="Book has pages" @onclick="() => HideBook(book.Id)">
+
+                            @if (book.HiddenPages)
+                            {
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M12.78 6.22a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06 0L3.22 7.28a.75.75 0 011.06-1.06L8 9.94l3.72-3.72a.75.75 0 011.06 0z"></path></svg>
+
+                            }
+                            else
+                            {
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M3.22 9.78a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 0l4.25 4.25a.75.75 0 01-1.06 1.06L8 6.06 4.28 9.78a.75.75 0 01-1.06 0z"></path></svg>
+                            }
+                        </a>
+                    }
+                    else
+                    {
+                        <div class="mr-4"></div>
+                    }
+
                     <span>
-                        @book.Name
+                        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="app-input-book" placeholder="Search" @bind-value="@book.Name" @onkeypress="RenameCallback">
                     </span>
-                    <a class="btn-octicon-pages app-octicon-hover app-octicon-working tooltipped tooltipped-s"
-                       type="button" aria-label="Book has pages" @onclick="() => HideBook(book.Id)">
-
-                        @if (book.HiddenPages)
-                        {
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M12.78 6.22a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06 0L3.22 7.28a.75.75 0 011.06-1.06L8 9.94l3.72-3.72a.75.75 0 011.06 0z"></path></svg>
-
-                        }
-                        else
-                        {
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M3.22 9.78a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 0l4.25 4.25a.75.75 0 01-1.06 1.06L8 6.06 4.28 9.78a.75.75 0 01-1.06 0z"></path></svg>
-                        }
-                    </a>
                 </div>
                 <div class="app-panel-left-header-buttons anim-fade-in">
                     <a class="btn-octicon app-octicon app-octicon-hover app-octicon-working tooltipped ml-1 tooltipped-s"
@@ -127,8 +136,10 @@
             </div>
             @foreach (var bookpage in book.Pages)
             {
-                <a @onclick="() => SelectBookPage( book.Id, bookpage.Id)" class="app-panel-left-item pl-6 pr-2  @(Data.SelectedPage == null || bookpage.Id != Data.SelectedPage.Id ? "" : "app-panel-left-item-active") @(book.HiddenPages ? "d-none" : "d-flex")">
-                    <div href="" class="app-panel-left-item-text css-truncate css-truncate-overflow">@bookpage.Title</div>
+                <a @onclick="() => SelectBookPage( book.Id, bookpage.Id)" class="app-panel-left-item pl-7 pr-2  @(Data.SelectedPage == null || bookpage.Id != Data.SelectedPage.Id ? "" : "app-panel-left-item-active") @(book.HiddenPages ? "d-none" : "d-flex")">
+
+                    <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="app-input-book" placeholder="Search" @bind-value="@bookpage.Title" @onkeypress="RenameCallback">
+                    @*<div href="" class="app-panel-left-item-text css-truncate css-truncate-overflow">@bookpage.Title</div>*@
                     <div class="app-panel-left-item-buttons anim-fade-in mb-2">
                         <button class="btn-octicon app-octicon app-octicon-hover app-octicon-working tooltipped ml-1 tooltipped-s pl-3"
                                 type="button" aria-label="Delete book" @onclick="() => DeleteBookPage(book.Id,bookpage.Id)">
@@ -163,8 +174,8 @@
     </div>
     <div class="app-footer-block pb-3 @( Data.Settings.IsSidebarCollapsed ? "d-none" : "d-inline"  )">
         <div class="app-panel-left-header  app-footer-text d-flex flex-justify-center">
-            <a class="" target="_blank" href="https://note.hypphen.so">Note&nbsp;</a> by <a class="font-madoni"
-                                                                                            target="_blank" href="https://hyophen.so">&nbsp;Hyphen</a>
+            <a class="" target="_blank" href="https://note.hyphen.so">Note&nbsp;</a> by <a class="font-madoni"
+                                                                                            target="_blank" href="https://hyphen.so">&nbsp;Hyphen</a>
         </div>
         <div class="d-flex flex-justify-center mt-1">
             <div class="app-footer-buttons anim-fade-in">

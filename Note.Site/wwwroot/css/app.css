@@ -99,7 +99,7 @@ button:focus {
 }
 
 .app-panel-right-header-left {
-    margin-top: 0px !important;
+    margin-top: 10px !important;
     align-items: center;
     /*margin-bottom: 8px;*/
     font-size: 12px;
@@ -193,10 +193,20 @@ button:focus {
     background: var(--app-panel-left-item-active-color);
 }
 
+    .app-panel-left-item-active > input {
+        background: transparent;
+    }
+
 .app-panel-left-item:hover {
     color: var(--app-panel-left-item-color);
     text-decoration: none;
     background: var(--app-panel-left-item-active-color);
+}
+
+.app-panel-left-item:hover > input {
+    color: var(--app-panel-left-item-color);
+    text-decoration: none;
+        background: transparent;
 }
 
 
@@ -329,7 +339,7 @@ button:focus {
 .app-panel-left-header-buttons {
     display: none;
     height: 15px;
-    margin-top: -8px;
+    margin-top: -5px;
 }
 
 .app-panel-left-item-buttons {
@@ -566,8 +576,8 @@ button:focus {
 
 .btn-octicon-pages {
     display: inline-block;
-    margin-left: 2px;
-    line-height: 1;
+    /*margin-left: 2px;*/
+    /*line-height: 1;*/
     color: #586069;
     vertical-align: middle;
     background: transparent;
@@ -595,6 +605,47 @@ button:focus {
     box-shadow: none;
 }
 
+.app-input-book {
+    border: none;
+    resize: none;
+    background-color: var(--app-panel-left-bg-color);
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+    height: 20px;
+    font-size: 15px;
+    width: 100%;
+    color: var(--app-panel-right-header-left-color);
+    margin-left: -3px !important;
+}
+
+
+    .app-input-book:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+.app-input-book {
+    border: none;
+    resize: none;
+    background-color: var(--app-panel-left-bg-color);
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+    height: 20px;
+    font-size: 15px;
+    width: 100%;
+    color: var(--app-panel-right-header-left-color);
+    margin-left: -3px !important;
+    cursor: pointer;
+}
+
+
+
+    .app-input-book:focus {
+        outline: none;
+        box-shadow: none;
+    }
 
 .app-octicon-search {
     padding-top: 3px;
@@ -630,3 +681,4 @@ button:focus {
     margin-bottom: -1px;
     fill: var(--app-panel-right-header-left-color);
 }
+

@@ -17,37 +17,37 @@ namespace Note.Site.Components
         public IJSRuntime JSRuntime { get; set; }
 
 
-        public string inputBookValue;
-        public string InputBookValue
-        {
-            set
-            {
-                inputBookValue = value;
-                Data.SelectedBook.Name = inputBookValue;
-                Data.SelectedPage.Saved = false;
-                Data.SaveNeeded = true;
-            }
-            get
-            {
-                return Data.SelectedBook != null ? Data.SelectedBook.Name : inputBookValue;
-            }
-        }
+        //public string inputBookValue;
+        //public string InputBookValue
+        //{
+        //    set
+        //    {
+        //        inputBookValue = value;
+        //        Data.SelectedBook.Name = inputBookValue;
+        //        Data.SelectedPage.Saved = false;
+        //        Data.SaveNeeded = true;
+        //    }
+        //    get
+        //    {
+        //        return Data.SelectedBook != null ? Data.SelectedBook.Name : inputBookValue;
+        //    }
+        //}
 
-        public string inputPageValue;
-        public string InputPageValue
-        {
-            set
-            {
-                inputPageValue = value;
-                Data.SelectedPage.Title = inputPageValue;
-                Data.SelectedPage.Saved = false;
-                Data.SaveNeeded = true;
-            }
-            get
-            {
-                return Data.SelectedPage != null ? Data.SelectedPage.Title : inputBookValue;
-            }
-        }
+        //public string inputPageValue;
+        //public string InputPageValue
+        //{
+        //    set
+        //    {
+        //        inputPageValue = value;
+        //        Data.SelectedPage.Title = inputPageValue;
+        //        Data.SelectedPage.Saved = false;
+        //        Data.SaveNeeded = true;
+        //    }
+        //    get
+        //    {
+        //        return Data.SelectedPage != null ? Data.SelectedPage.Title : inputBookValue;
+        //    }
+        //}
 
 
         public string textareaValue;
@@ -107,7 +107,7 @@ namespace Note.Site.Components
         }
 
         protected override async Task OnParametersSetAsync()
-        {
+         {
             if (Data.SelectedPage != null)
             {
                 await JSRuntime.InvokeVoidAsync("renderMarkdownNow", TextareaValue);
