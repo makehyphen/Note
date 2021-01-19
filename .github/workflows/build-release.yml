@@ -1,4 +1,4 @@
-name: Build debug
+name: Build release
 on: [push, pull_request]
 env:
   CONFIGURATION: Release
@@ -19,5 +19,3 @@ jobs:
       run: dotnet build "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-restore
     - name: Test app
       run: dotnet test "${{ env.PROJECT_PATH }}" --no-build
-    - name: Publish app for deploy
-      run: dotnet publish "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
