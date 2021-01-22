@@ -112,7 +112,7 @@
                     }
 
                     <span>
-                        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="app-input-book" placeholder="Search" @bind-value="@book.Name" @onkeypress="RenameCallback">
+                        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="app-input-book" @bind-value="@book.Name" @onkeypress="RenameCallback">
                     </span>
                 </div>
                 <div class="app-panel-left-header-buttons anim-fade-in">
@@ -138,7 +138,7 @@
             {
                 <a @onclick="() => SelectBookPage( book.Id, bookpage.Id)" class="app-panel-left-item pl-7 pr-2  @(Data.SelectedPage == null || bookpage.Id != Data.SelectedPage.Id ? "" : "app-panel-left-item-active") @(book.HiddenPages ? "d-none" : "d-flex")">
 
-                    <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="app-input-book" placeholder="Search" @bind-value="@bookpage.Title" @onkeypress="RenameCallback">
+                    <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="app-input-book" @bind-value="@bookpage.Title" @onkeypress="RenameCallback">
                     @*<div href="" class="app-panel-left-item-text css-truncate css-truncate-overflow">@bookpage.Title</div>*@
                     <div class="app-panel-left-item-buttons anim-fade-in mb-2">
                         <button class="btn-octicon app-octicon app-octicon-hover app-octicon-working tooltipped ml-1 tooltipped-s pl-3"
