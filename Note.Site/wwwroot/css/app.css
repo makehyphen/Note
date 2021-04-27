@@ -203,11 +203,11 @@ button:focus {
     background: var(--app-panel-left-item-active-color);
 }
 
-.app-panel-left-item:hover > input {
-    color: var(--app-panel-left-item-color);
-    text-decoration: none;
+    .app-panel-left-item:hover > input {
+        color: var(--app-panel-left-item-color);
+        text-decoration: none;
         background: transparent;
-}
+    }
 
 
     .app-panel-left-item:hover > .app-panel-left-item-icon > svg {
@@ -499,6 +499,18 @@ button:focus {
     font-size: 14px;
 }
 
+.font-login {
+    /*background: linear-gradient(to right, #0F2027 0%, #203A43 0%, #2C5364 100%);*/
+    /* background: linear-gradient(to right, #f12711 0%, #f5af19 100%); */
+    background: var(--app-note-logo-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .app-footer-block {
     width: 260px;
     position: fixed;
@@ -540,16 +552,15 @@ button:focus {
     background: transparent !important;
 }
 
-.btn-login > svg {
-    height: 24px;
-    fill: var(--app-panel-right-header-left-color);
-    
-}
+    .btn-login > svg {
+        height: 24px;
+        fill: var(--app-panel-right-header-left-color);
+    }
 
-.btn-login:hover > svg {
-    fill: var(--app-panel-left-item-color);
-    cursor: pointer;
-}
+    .btn-login:hover > svg {
+        fill: var(--app-panel-left-item-color);
+        cursor: pointer;
+    }
 
 .app-login-text {
     font-size: 56px;
@@ -561,7 +572,8 @@ button:focus {
 }
 
 .app-login-subtext {
-    margin-top: 24px !important;
+    /*margin-top: 24px !important;*/
+    color: var(--app-panel-right-header-left-color);
 }
 
     .app-login-subtext > a {
@@ -605,10 +617,10 @@ button:focus {
 }
 
 
-.app-input-search:focus {
-    outline: none;
-    box-shadow: none;
-}
+    .app-input-search:focus {
+        outline: none;
+        box-shadow: none;
+    }
 
 .app-input-book {
     border: none;
@@ -663,6 +675,7 @@ button:focus {
     margin-bottom: -1px;
     fill: var(--app-panel-right-header-left-color);
 }
+
 .app-input-search > svg {
     fill: var(--app-panel-right-header-left-color);
 }
@@ -686,4 +699,3 @@ button:focus {
     margin-bottom: -1px;
     fill: var(--app-panel-right-header-left-color);
 }
-
